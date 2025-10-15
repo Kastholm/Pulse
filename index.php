@@ -1,10 +1,11 @@
 <?php get_template_part('src/components/header'); ?>
-<main>
+<main class="px-4">
 
 
 	<div>
 
 		<div class="bg-body-background-main">
+			<?php get_template_part('src/components/breadcrumb'); ?>
 
 			<?php
 			// Dynamically load different content based on the page type

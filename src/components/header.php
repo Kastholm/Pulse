@@ -135,34 +135,7 @@ $site_logo = get_theme_mod('custom_logo');
 				</span>
 			</ul>
        </nav>
-       
-		<!-- Mobile Dark Mode Toggle -->
-		<span class="grid md:hidden">
-			<label for="darkModeToggle" class="ml-auto mr-4 cursor-pointer">
-				<input class="toggle-checkbox" aria-label="darkmodetoggle" id="darkModeToggle" type="checkbox">
-				<div class="toggle-slot">
-					<div class="sun-icon-wrapper">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffbb52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun iconify sun-icon">
-							<circle cx="12" cy="12" r="4"></circle>
-							<path d="M12 2v2"></path>
-							<path d="M12 20v2"></path>
-							<path d="m4.93 4.93 1.41 1.41"></path>
-							<path d="m17.66 17.66 1.41 1.41"></path>
-							<path d="M2 12h2"></path>
-							<path d="M20 12h2"></path>
-							<path d="m6.34 17.66-1.41 1.41"></path>
-							<path d="m19.07 4.93-1.41 1.41"></path>
-						</svg>
-					</div>
-					<div class="toggle-button"></div>
-					<div class="moon-icon-wrapper">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon iconify moon-icon">
-							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-						</svg>
-					</div>
-				</div>
-			</label>
-		</span>
+    
 
 		<!-- Mobile Menu Button -->
 		<button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 w-9 shrink-0 md:hidden ml-auto" data-state="closed" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMobileMenu()">
@@ -177,8 +150,8 @@ $site_logo = get_theme_mod('custom_logo');
 </header>
 
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 z-50 bg-black bg-opacity-50 hidden">
-	<div class="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-6">
+<div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden">
+	<div class="fixed right-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-6">
 		<div class="flex items-center justify-between mb-6">
 			<?php if ($site_logo) : ?>
 				<a href="<?php echo esc_url($site_url); ?>" class="flex items-center gap-2">

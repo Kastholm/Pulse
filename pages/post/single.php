@@ -1,8 +1,8 @@
 
 
-<div class="containerr mx-auto px-4 py-8 articleSection">
+<div class="mx-auto articleSection grid relative lg:grid-cols-[1fr_1fr]">
 	<?php while (have_posts()) : the_post(); ?>
-		<article class="w-full rounded-lg">
+		<article class="w-full lg:w-[700px] rounded-lg">
 			<section>
 				<!-- Category -->
 				<div class="grid">
@@ -81,7 +81,7 @@
 			</section>
 
 			<!-- Article content -->
-			<section class="articleText leading-8 px-3 text-lg prose prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary">
+			<section class="articleText leading-8 text-lg prose prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary">
 				<?php the_content(); ?>
 			</section>
 
@@ -103,4 +103,5 @@
 			<?php endif; ?>
 		</article>
 	<?php endwhile; ?>
+	<?php get_template_part('pages/post/components/top_news'); ?>
           </div>
