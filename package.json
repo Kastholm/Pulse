@@ -1,0 +1,16 @@
+{
+  "name": "pulse",
+  "version": "1.0.0",
+  "description": "news article wordpress theem",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
+  },
+  "author": "Websail",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.14",
+    "tailwindcss": "^4.1.14"
+  }
+}

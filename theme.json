@@ -149,49 +149,49 @@
 							"fontFamily": "Raleway",
 							"fontStyle": "normal",
 							"fontWeight": "200",
-							"src": "file:./assets/fonts/raleway-v34-latin-200.woff2"
+							"src": "file:./src/fonts/raleway-v34-latin-200.woff2"
 						},
 						{
 							"fontFamily": "Raleway",
 							"fontStyle": "italic",
 							"fontWeight": "200",
-							"src": "file:./assets/fonts/raleway-v34-latin-200italic.woff2"
+							"src": "file:./src/fonts/raleway-v34-latin-200italic.woff2"
 						},
 						{
 							"fontFamily": "Raleway",
 							"fontStyle": "normal",
 							"fontWeight": "400",
-							"src": "file:./assets/fonts/raleway-v34-latin-regular.woff2"
+							"src": "file:./src/fonts/raleway-v34-latin-regular.woff2"
 						},
 						{
 							"fontFamily": "Raleway",
 							"fontStyle": "italic",
 							"fontWeight": "400",
-							"src": "file:./assets/fonts/raleway-v34-latin-italic.woff2"
+							"src": "file:./src/fonts/raleway-v34-latin-italic.woff2"
 						},
 						{
 							"fontFamily": "Raleway",
 							"fontStyle": "normal",
 							"fontWeight": "600",
-							"src": "file:./assets/fonts/raleway-v34-latin-600.woff2"
+							"src": "file:./src/fonts/raleway-v34-latin-600.woff2"
 						},
 						{
 							"fontFamily": "Raleway",
 							"fontStyle": "italic",
 							"fontWeight": "600",
-							"src": "file:./assets/fonts/raleway-v34-latin-600italic.woff2"
+							"src": "file:./src/fonts/raleway-v34-latin-600italic.woff2"
 						},
 						{
 							"fontFamily": "Raleway",
 							"fontStyle": "normal",
 							"fontWeight": "800",
-							"src": "file:./assets/fonts/raleway-v34-latin-800.woff2"
+							"src": "file:./src/fonts/raleway-v34-latin-800.woff2"
 						},
 						{
 							"fontFamily": "Raleway",
 							"fontStyle": "italic",
 							"fontWeight": "800",
-							"src": "file:./assets/fonts/raleway-v34-latin-800italic.woff2"
+							"src": "file:./src/fonts/raleway-v34-latin-800italic.woff2"
 						}
 					],
 					"fontFamily": "'Raleway', sans-serif",
