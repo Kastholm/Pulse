@@ -3,11 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 $site_title = get_bloginfo('name');
 $site_url = home_url();
-if (defined('site_logo') && $site_logo) {
-	$site_logo = $site_logo['url'];
-} else {
-	$site_logo = '';
-}
+$site_logo = get_theme_mod('custom_logo');
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -17,81 +13,237 @@ if (defined('site_logo') && $site_logo) {
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/src/css/output.css">
 <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<header class="sticky top-0 z-50">
-	<div class="bg-header-background max-lg:pl-base lg:px-base w-full lg:py-4">
-		<div class="max-w-wide mx-auto flex items-center justify-between">
-			<a class="flex w-full items-center justify-start lg:justify-start" href="<?php echo $site_url; ?>" aria-label="<?php echo $site_title; ?>">
-				<?php if (defined('site_logo') && $site_logo) : ?>
-					<img class="aspect-[244/44] md:w-[150px] h-[44px] max-h-7 md:max-h-11" src="<?php echo $site_logo['url']; ?>" alt="<?php echo $site_title; ?>">
-				<?php else : ?>
-					<span class="text-header-text text-h4 font-bold"><?php echo $site_title; ?></span>
-				<?php endif; ?>
-			</a>
-			<div class=" flex items-center lg:hidden">
-				<div class="mobile-menu bg-header-background-secondary has-global-padding relative flex items-center gap-2 py-4 lg:hidden" x-data="{secondaryMenu: false}" x-cloak>
 
-					<?php /* do_action( 'newspack_header_before_mobile_toggle' ); */ ?>
+<header class="fixed md:relative z-40 w-screen min-h-[65px]">
+	<header class="flex fixed top-0 items-center justify-center gap-4 border-b bg-second_color_light dark:bg-second_color_dark px-4 md:px-6">
+		<nav class="h-16 content-center bg-second_color_light dark:bg-second_color_dark w-screen items-center justify-center">
+			<ul class="md:w-[1000px] bg-second_color_light dark:bg-second_color_dark !m-auto flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6 px-2 lg:pl-4">
+				
+				<!-- Logo -->
+				<li class="flex-shrink-0">
+					<?php if ($site_logo) : ?>
+						<a href="<?php echo esc_url($site_url); ?>">
+							<?php echo wp_get_attachment_image($site_logo, 'full', false, array(
+								'alt' => get_bloginfo('name'),
+								'loading' => 'lazy',
+								'class' => 'object-contain w-[80px] h-auto sm:w-[90px] sm:h-[62px] md:w-[120px] md:h-auto'
+							)); ?>
+						</a>
+					<?php else : ?>
+						<a href="<?php echo esc_url($site_url); ?>" class="text-lg font-semibold">
+							<?php echo esc_html($site_title); ?>
+						</a>
+					<?php endif; ?>
+				</li>
 
-					<button id="mobile-nav-trigger" aria-label="Mobile nav trigger" class="bg-header-search-icon-background text-header-search-icon-color grid size-10 cursor-pointer place-content-center rounded-full" @click="secondaryMenu = !secondaryMenu">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-						</svg>
-					</button>
-					<div class="bg-header-background-secondary py-lg px-base fixed right-4 top-4 z-40 h-[calc(100vh-2rem)] w-80 max-w-full overflow-y-auto rounded-lg shadow-lg" x-show="secondaryMenu" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="transform translate-x-full" x-transition:enter-end="transform translate-x-0" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="transform translate-x-0" x-transition:leave-end="transform translate-x-full" @click.outside="secondaryMenu = false">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-header-text absolute right-4 top-4 size-6 cursor-pointer" @click="secondaryMenu = !secondaryMenu">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-						</svg>
-						<form role="search" method="get" class="search-form my-base" action="<?php echo home_url('/'); ?>">
-							<label for="search" class="sr-only block text-sm font-medium leading-6 text-gray-900"><?php _e('Søg efter artikler', 'mxnkeys'); ?></label>
-							<div class="mt-2">
-								<input id="search" type="search" class="focus:ring-body-accent block w-full rounded-md border-0 px-3 py-1.5 shadow-sm outline-none ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6" placeholder="<?php _e('Søg', 'mxnkeys'); ?>" value="<?php echo get_search_query(); ?>" name="s" />
-							</div>
-						</form>
-						<ul class="flex flex-col divide-y">
-							<?php
-							if (has_nav_menu('primary-nav')) {
-								wp_nav_menu(
-									array(
-										'theme_location'    => 'primary-nav',
-										'menu_id'           => 'primary-nav',
-										'container'         => '',
-										'menu_class'        => 'relative flex flex-col items-center justify-start gap-base text-header-text',
-										'walker'            => new Mxn_mobile_nav_walker()
-									)
-								);
-							}
-							?>
-						</ul>
-					</div>
-
-					<?php /* do_action( 'newspack_header_after_mobile_toggle' ); */ ?>
-
-				</div>
-			</div>
-		</div>
-	</div>
-	<nav id="site-navigation" class="bg-header-background-secondary has-global-padding border-b-header-border z-10 w-full border-b py-2 max-lg:hidden" aria-label="<?php esc_attr('Main Navigation'); ?>">
-		<div class="max-w-wide relative mx-auto flex w-full items-center justify-between gap-4">
-			<div class="navigation flex items-center justify-center">
+				<!-- Navigation Menu -->
 				<?php
-				if (has_nav_menu('primary-nav')) {
-					wp_nav_menu(
-						array(
-							'theme_location'    => 'primary-nav',
-							'menu_id'           => 'primary-nav',
-							'container'         => '',
-							'menu_class'        => 'hidden lg:flex relative  items-center justify-end gap-base text-header-text',
-							'walker'            => new Mxn_header_nav_walker()
-						)
-					);
-				}
+				wp_nav_menu(array(
+					'theme_location' => 'primary-nav',
+					'container' => false,
+					'items_wrap' => '%3$s',
+					'fallback_cb' => false,
+					'walker' => new class extends Walker_Nav_Menu {
+						function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+							$classes = empty($item->classes) ? array() : (array) $item->classes;
+							$classes[] = 'menu-item-' . $item->ID;
+							
+							$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
+							$class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+							
+							$id = apply_filters('nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args);
+							$id = $id ? ' id="' . esc_attr($id) . '"' : '';
+							
+							$output .= '<li' . $id . $class_names .'>';
+							
+							$attributes = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
+							$attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target     ) .'"' : '';
+							$attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn        ) .'"' : '';
+							$attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url        ) .'"' : '';
+							
+							// Check if current page matches menu item
+							$current_class = '';
+							if (is_category() && strpos($item->url, '/kategori/') !== false) {
+								$category_slug = get_queried_object()->slug;
+								if (strpos($item->url, $category_slug) !== false) {
+									$current_class = 'text-foreground';
+								} else {
+									$current_class = 'text-muted-foreground';
+								}
+							} elseif (is_home() && $item->url === home_url('/')) {
+								$current_class = 'text-foreground';
+							} else {
+								$current_class = 'text-muted-foreground';
+							}
+							
+							$item_output = isset($args->before) ? $args->before : '';
+							$item_output .= '<a class="transition-colors hover:text-foreground hidden md:inline-block ' . $current_class . '"' . $attributes .'>';
+							$item_output .= (isset($args->link_before) ? $args->link_before : '') . apply_filters('the_title', $item->title, $item->ID) . (isset($args->link_after) ? $args->link_after : '');
+							$item_output .= '</a>';
+							$item_output .= isset($args->after) ? $args->after : '';
+							
+							$output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+						}
+						
+						function end_el(&$output, $item, $depth = 0, $args = null) {
+							$output .= "</li>\n";
+						}
+					}
+				));
 				?>
-			</div>
-			<div class="flex justify-end gap-4">
-				<?php /* get_template_part('/template-parts/partials/search-popover'); */ ?>
-			</div>
-		</div>
-	</nav>
+
+				<!-- Desktop Controls -->
+				<span class="hidden md:grid grid-cols-2 items-center ml-auto">
+					<!-- Dark Mode Toggle -->
+					<!-- <label for="darkModeToggle" class="ml-auto mr-4 cursor-pointer">
+						<input class="toggle-checkbox" aria-label="darkmodetoggle" id="darkModeToggle" type="checkbox">
+						<div class="toggle-slot">
+							<div class="sun-icon-wrapper">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffbb52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun iconify sun-icon">
+									<circle cx="12" cy="12" r="4"></circle>
+									<path d="M12 2v2"></path>
+									<path d="M12 20v2"></path>
+									<path d="m4.93 4.93 1.41 1.41"></path>
+									<path d="m17.66 17.66 1.41 1.41"></path>
+									<path d="M2 12h2"></path>
+									<path d="M20 12h2"></path>
+									<path d="m6.34 17.66-1.41 1.41"></path>
+									<path d="m19.07 4.93-1.41 1.41"></path>
+								</svg>
+							</div>
+							<div class="toggle-button"></div>
+							<div class="moon-icon-wrapper">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon iconify moon-icon">
+									<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+								</svg>
+							</div>
+						</div>
+					</label> -->
+					
+					<!-- Search Button -->
+					<a class="hidden lg:block" href="<?php echo esc_url(home_url('/search')); ?>">
+						<div>
+							<button type="submit" aria-label="Søg artikler" class="flex flex-end items-center bg-accent_color_dark dark:bg-bg-accent_color_light bg-opacity-80 justify-center w-12 h-12 rounded-lg">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+								</svg>
+                </button>
+                    </div>
+					</a>
+				</span>
+			</ul>
+       </nav>
+       
+		<!-- Mobile Dark Mode Toggle -->
+		<span class="grid md:hidden">
+			<label for="darkModeToggle" class="ml-auto mr-4 cursor-pointer">
+				<input class="toggle-checkbox" aria-label="darkmodetoggle" id="darkModeToggle" type="checkbox">
+				<div class="toggle-slot">
+					<div class="sun-icon-wrapper">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffbb52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun iconify sun-icon">
+							<circle cx="12" cy="12" r="4"></circle>
+							<path d="M12 2v2"></path>
+							<path d="M12 20v2"></path>
+							<path d="m4.93 4.93 1.41 1.41"></path>
+							<path d="m17.66 17.66 1.41 1.41"></path>
+							<path d="M2 12h2"></path>
+							<path d="M20 12h2"></path>
+							<path d="m6.34 17.66-1.41 1.41"></path>
+							<path d="m19.07 4.93-1.41 1.41"></path>
+						</svg>
+					</div>
+					<div class="toggle-button"></div>
+					<div class="moon-icon-wrapper">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon iconify moon-icon">
+							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+						</svg>
+					</div>
+				</div>
+			</label>
+		</span>
+
+		<!-- Mobile Menu Button -->
+		<button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 w-9 shrink-0 md:hidden ml-auto" data-state="closed" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMobileMenu()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-5 w-5">
+				<line x1="4" x2="20" y1="12" y2="12"></line>
+				<line x1="4" x2="20" y1="6" y2="6"></line>
+				<line x1="4" x2="20" y1="18" y2="18"></line>
+			</svg>
+			<span class="sr-only">Toggle navigation menu</span>
+		</button>
+	</header>
 </header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 z-50 bg-black bg-opacity-50 hidden">
+	<div class="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-6">
+		<div class="flex items-center justify-between mb-6">
+			<?php if ($site_logo) : ?>
+				<a href="<?php echo esc_url($site_url); ?>" class="flex items-center gap-2">
+					<?php echo wp_get_attachment_image($site_logo, 'full', false, array('class' => 'h-6 w-auto')); ?>
+					<span class="sr-only"><?php echo esc_html($site_title); ?></span>
+				</a>
+			<?php else : ?>
+				<a href="<?php echo esc_url($site_url); ?>" class="text-lg font-semibold">
+					<?php echo esc_html($site_title); ?>
+				</a>
+			<?php endif; ?>
+			<button onclick="toggleMobileMenu()" class="text-gray-500">
+				<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+				</svg>
+			</button>
+		</div>
+		
+		<nav class="grid gap-6 text-lg font-medium">
+			<?php
+			wp_nav_menu(array(
+				'theme_location' => 'primary-nav',
+				'container' => false,
+				'menu_class' => 'space-y-2',
+				'fallback_cb' => false,
+				'walker' => new class extends Walker_Nav_Menu {
+					function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+						$classes = empty($item->classes) ? array() : (array) $item->classes;
+						$classes[] = 'menu-item-' . $item->ID;
+						
+						$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
+						$class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+						
+						$id = apply_filters('nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args);
+						$id = $id ? ' id="' . esc_attr($id) . '"' : '';
+						
+						$output .= '<li' . $id . $class_names .'>';
+						
+						$attributes = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
+						$attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target     ) .'"' : '';
+						$attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn        ) .'"' : '';
+						$attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url        ) .'"' : '';
+						
+						$item_output = isset($args->before) ? $args->before : '';
+						$item_output .= '<a class="block text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"' . $attributes .'>';
+						$item_output .= (isset($args->link_before) ? $args->link_before : '') . apply_filters('the_title', $item->title, $item->ID) . (isset($args->link_after) ? $args->link_after : '');
+						$item_output .= '</a>';
+						$item_output .= isset($args->after) ? $args->after : '';
+						
+						$output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+					}
+					
+					function end_el(&$output, $item, $depth = 0, $args = null) {
+						$output .= "</li>\n";
+					}
+				}
+			));
+			?>
+		</nav>
+	</div>
+     </div>
+
+<script>
+function toggleMobileMenu() {
+	const menu = document.getElementById('mobile-menu');
+	menu.classList.toggle('hidden');
+}
+</script>
