@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "../../pages/post/src/css/style.css";
+@import "../../pages/articles/src/css/style.css";
 
 :root {
   --main-color-light: #fafafa;

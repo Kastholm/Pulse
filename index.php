@@ -1,22 +1,9 @@
 <?php get_template_part('src/components/header'); ?>
 <main>
 
-	<?php if (has_action('mxn_horizontal_1')) : ?>
-		<div class="my-md max-w-wide mx-auto flex items-center justify-center">
-			<?php do_action('mxn_horizontal_1'); ?>
-		</div>
-	<?php endif; ?>
-
-	<?php if (has_action('newspack_theme_main_top')) : ?>
-			<div class="my-md max-w-wide mx-auto flex items-center justify-center">
-				<?php do_action('newspack_theme_main_top'); ?>
-			</div>
-	<?php endif; ?>
 
 	<div>
-		<?php
-		do_action( 'newspack_theme_primary_top' );
-		?>
+
 		<div class="bg-body-background-main">
 
 			<?php
@@ -30,7 +17,7 @@
 			} elseif (is_search()) {
 				get_template_part('pages/articles/search');
 			} elseif (is_single()) {
-				get_template_part('pages/single');
+				get_template_part('pages/post/single');
 			} elseif (is_page()) {
 				get_template_part('pages/articles/page');
 			}
@@ -56,15 +43,6 @@
 			<?php endif; ?>
 		</div>
 	</div>
-	<?php
-		/* if (has_action('mxn_float')) {
-			do_action('mxn_float');
-		}
-
-		do_action( 'newspack_theme_main_bottom' ); */
-	?>
 </main>
-
-<?php /* do_action( 'newspack_theme_primary_bottom' ); */ ?>
 <?php
 get_template_part('src/components/footer');

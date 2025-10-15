@@ -1,13 +1,15 @@
-<?php get_header(); ?>
-<div class="main">
-  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <article <?php post_class('post'); ?>>
-      <h1 class="post-title"><?php the_title(); ?></h1>
-      <div class="entry"><?php the_content(); ?></div>
-    </article>
-  <?php endwhile; endif; ?>
+
+<div class="gap-md mt-base grid grid-cols-1 lg:grid-cols-3">
+	<article class="col-span-1 lg:col-span-2">
+
+		<?php /* get_template_part('template-parts/partials/post-sponsored'); */ ?>
+
+		<div>
+			<?php the_content(); ?>
+		</div>
+	</article>
+	<aside class="gap-md col-span-1 flex flex-col max-lg:hidden">
+		<h2 class="mb-base text-h3"><?php echo __('Nyeste artikler', 'Websail') ?></h2>
+		<?php /* get_template_part('template-parts/partials/most-popular-posts'); */ ?>
+	</aside>
 </div>
-<aside class="sidebar">
-  <?php if ( is_active_sidebar( 'sidebar-1' ) ) { dynamic_sidebar( 'sidebar-1' ); } ?>
-</aside>
-<?php get_footer(); ?>
