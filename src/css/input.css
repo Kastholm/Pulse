@@ -1,1 +1,225 @@
 @import "tailwindcss";
+
+:root {
+  --main-color-light: #fafafa;
+  --second-color-light: #ffffff;
+  --text-main-color-light: #f8fafc;
+  --text-second-color-light: #e2e8f0;
+  --fade-color-light: #09060a;
+  --accent-color-light: #007F6C;
+  --accent-color-gradient-light: #007F6C, #00C090;
+
+  --main-color-dark: #10172b;
+  --second-color-dark: #20293c;
+  --text-main-color-dark: #10172b;
+  --fade-color-dark: #c3c9d7;
+  --accent-color-dark: #00C090;
+
+  --color-accent: #007F6C;
+  --background: hsl(var(--background));
+  --foreground: hsl(var(--foreground));
+}
+
+
+.font-inter {
+    /* @apply font-sans;
+    font-family: var(--font-inter), sans-serif; */
+    font-family: sans-serif;
+  }
+  
+  .font-mulish {
+    /* @apply font-sans;
+    font-family: var(--font-mulish), sans-serif; */
+    font-family: sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    @apply bg-[var(--main-color-light)] dark:bg-[var(--main-color-dark)];
+  }
+  body {  
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow-x: clip;
+    @apply bg-[var(--main-color-light)] dark:bg-[var(--main-color-dark)];
+  }
+  main {
+    @apply pt-[40px] md:pt-[20px];
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  address {
+    font-style: normal;
+  }
+  * {
+    box-sizing: border-box;
+    /* padding: 0; */
+    margin: 0;
+    max-width: 100vw;
+    @apply /* font-inter  */text-[var(--main-color-dark)] dark:text-[var(--main-color-light)];
+  }
+  li,
+  a {
+    cursor: pointer;
+  }
+  ul,
+  ol,
+  li {
+    list-style-type: none;
+  }
+/*   h1 {
+    @apply font-mulish font-bold;
+  } */
+  .loadingScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    transition-property: opacity, transform, filter, background;
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    @apply bg-[var(--main-color-light)] dark:bg-[var(--main-color-dark)];
+  }
+  .page-transition-light-mode {
+    opacity: 0;
+    background: rgb(255, 255, 255);
+    transform: translateY(40px);
+    filter: blur(12px);
+  }
+  .page-transition-dark-mode {
+    opacity: 0;
+    background: black;
+    transform: translateY(40px);
+    filter: blur(12px);
+  }
+  
+  .containerr {
+    padding: 0 10px;
+  }
+  /* -------------------------- INDICATING PAGE WIDTH ------------------------- */
+  main:not(.dashboard) > section:not(.articleSection),
+  .pageIndicator {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  /* ----------------------------------- NAV ---------------------------------- */
+  @media (min-width: 800px) {
+    .sticky-nav-enabled {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+  }
+  /* ------------------------ CUSTOM SCROLLBAR STYLING ------------------------ */
+  @media (min-width: 800px) {
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    /* Styler baggrunden på scrollbar track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+  }
+  /* Styler det scrollbare håndtag */
+  ::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    @apply bg-[var(--accent-color-light)] dark:bg-[var(--accent-color-dark)] bg-black/25;
+    border-radius: 10px;
+  }
+  /* Styler håndtaget ved hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[var(--accent-color-dark)] dark:bg-[var(--accent-color-light)];
+  }
+  
+  /* ------------------------------ TIMEINDICATOR ----------------------------- */
+  .sliderNav .timeSpan {
+    @apply text-[var(--accent-color-light)] dark:text-[var(--accent-color-dark)];
+  }
+  
+  /* ----------------------------------- ADS ---------------------------------- */
+  
+  .desktop {
+    background: #fbf8f8 !important;
+    min-height: 250px !important;
+    display: grid !important;
+    place-content: center !important;
+    position: relative;
+    margin-bottom: 30px;
+    display: grid;
+    place-content: center;
+  }
+  .desktop::before {
+    content: "Annonce";
+    font-size: 10px;
+    text-align: center;
+    clear: right;
+    display: block;
+    color: #696969;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  @media (max-width: 775px) {
+    .desktop {
+      min-height: 0px !important;
+    }
+    .desktop::before {
+      content: none;
+    }
+  
+    .mobile {
+      /*  margin-left: -1.5rem !important; */
+      background: #f5f5f5 !important;
+      min-height: 340px !important;
+      align-items: center;
+      display: grid !important;
+      place-content: start center !important;
+      grid-template-rows: auto 1fr;
+      padding: 5px 0 !important;
+      position: relative;
+    }
+    .mobile::before {
+      content: "Artiklen forsætter efter annoncen:";
+      font-size: 10px;
+      text-align: center;
+      clear: right;
+      display: block;
+      color: #696969;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .mobile::before {
+      content: "Annonce";
+      font-size: 10px;
+      text-align: center;
+      clear: right;
+      display: block;
+      color: #696969;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  }
+  
+  .lineHeader {
+    position: relative;
+    -webkit-transform: skewX(-15deg);
+    -moz-transform: skewX(-15deg);
+    -ms-transform: skewX(-15deg);
+    -o-transform: skewX(-15deg);
+    transform: skewX(-15deg);
+  }
+  .lineHeader::before {
+    content: "";
+    background: #555;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: 50%;
+    width: 100%;
+    height: 1px;
+    z-index: -1;
+  }

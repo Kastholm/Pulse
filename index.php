@@ -1,5 +1,5 @@
 <?php get_template_part('src/components/header'); ?>
-<main id="main" class="my-md has-global-padding w-full">
+<main>
 
 	<?php if (has_action('mxn_horizontal_1')) : ?>
 		<div class="my-md max-w-wide mx-auto flex items-center justify-center">
@@ -13,7 +13,7 @@
 			</div>
 	<?php endif; ?>
 
-	<div id="content" class="max-w-wide mx-auto flex flex-col relative">
+	<div>
 		<?php
 		do_action( 'newspack_theme_primary_top' );
 		?>
@@ -22,19 +22,17 @@
 			<?php
 			// Dynamically load different content based on the page type
 			if (is_front_page()) {
-				get_template_part('pages/home');
+				get_template_part('pages/articles/home');
 			} elseif (is_date()) {
-				get_template_part('pages/archive-dates');
+				get_template_part('pages/articles/archive-dates');
 			} elseif (is_archive()) {
-				get_template_part('pages/archive');
+				get_template_part('pages/articles/archive');
 			} elseif (is_search()) {
-				get_template_part('pages/search');
+				get_template_part('pages/articles/search');
 			} elseif (is_single()) {
 				get_template_part('pages/single');
 			} elseif (is_page()) {
-				get_template_part('pages/page');
-			} else {
-				get_template_part('pages/archive');
+				get_template_part('pages/articles/page');
 			}
 			?>
 

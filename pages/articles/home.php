@@ -1,8 +1,7 @@
-<section class="mb-lg gap-md flex flex-col">
-    <h1>TEEEST</h1>
+<section class="mb-lg gap-md md:flex md:flex-col">
 	<?php /* get_template_part('template-parts/partials/recent-news-slider'); */ ?>
 
-	<div class="post-grid">
+	<div>
 		<?php
 		$post_count = 0; // Initialize a counter
 		$homepage_query = new WP_Query(array(
@@ -13,37 +12,48 @@
 			'paged' => get_query_var('page'),
 			'ignore_sticky_posts' => true
 		));
-		if ($homepage_query->have_posts()) :
-			while ($homepage_query->have_posts()) : $homepage_query->the_post();
-				$post_count++;
 		?>
-				<article class="post-card">
-					<?php if ($post_count == 1) : ?>
-						<?php get_template_part('pages/articles/components/post_first_card'); ?>
-					<?php else : ?>
-						<?php /* get_template_part('template-parts/partials/post', 'card'); */ ?>
-					<?php endif; ?>
-				</article>
+		<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+			<?php
+			if ($homepage_query->have_posts()) :
+				while ($homepage_query->have_posts()) : $homepage_query->the_post();
+					$post_count++;
+			?>
 				<?php if ($post_count == 1) : ?>
-					<?php
-					/* if (has_action('mxn_mobile_in_feed')) {
-						echo '<div class="lg:hidden not-is-style-prose flex items-center justify-center">';
-						do_action('mxn_mobile_in_feed');
-						echo '</div>';
-					} */
-					?>
+					<!-- Første artikel - tager 2/3 af bredden på md+ -->
+					<div class="md:col-span-2 m-auto">
+						<?php get_template_part('pages/articles/src/components/post_first_card'); ?>
+					</div>
+
+				<?php elseif ($post_count <= 3) : ?>
+					<!-- Artikler 2-3 - fylder den sidste 1/3 med lodret layout på md+ -->
+					<?php if ($post_count == 2) : ?>
+						<div class="lg:col-span-1 md:flex md:flex-col gap-4 md:gap-6">
+					<?php endif; ?>
+					<div class="md:flex-1 m-auto">
+						<?php get_template_part('pages/articles/src/components/post_grid_card'); ?>
+					</div>
+					<?php if ($post_count == 3) : ?>
+						</div>
+					<?php endif; ?>
+					
+				<?php else : ?>
+					<!-- Artikler 4+ - normale 3-kolonne grid på md+ -->
+					<?php if ($post_count == 4) : ?>
+						<!-- Start ny række med 3 kolonner på md+ -->
+						<div class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-4">
+					<?php endif; ?>
+					<div>
+						<?php get_template_part('pages/articles/src/components/post_grid_card'); ?>
+					</div>
 				<?php endif; ?>
 			<?php
-			endwhile;
-			?>
-		<?php
-		endif;
-		wp_reset_postdata();
-		?>
-		<?php if (has_action('mxn_rectangle')) : ?>
-			<div class="feed-rectangle flex w-full items-center justify-center max-lg:hidden">
-				<?php do_action('mxn_rectangle'); ?>
-			</div>
-		<?php endif; ?>
+				endwhile;
+				// Luk den sidste grid container hvis vi har flere end 4 artikler
+				if ($post_count > 4) : ?>
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
 	</div>
 </section>
