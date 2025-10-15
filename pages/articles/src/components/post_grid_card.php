@@ -45,7 +45,7 @@ $args = wp_parse_args($args, array('style' => ''));
 		<header class="grid grid-rows-[auto_1fr_auto] min-h-[140px]">
 			<aside class="flex gap-2">
 				<a href="<?php echo esc_url($category_permalink); ?>">
-					<p class="relative text-sm w-fit rounded-full py-1 my-1 font-medium  text-accent-color-light dark:text-accent-color-dark !text-red-600 hover:text-black dark:hover:text-gray-300">
+					<p class="relative text-sm w-fit rounded-full py-1 my-1 font-medium  text-accent-color-light dark:text-accent-color-dark !text-indigo-600 hover:text-black dark:hover:text-gray-300">
 						<?php echo esc_html($primary_category); ?>
 					</p>
 				</a>
@@ -64,7 +64,7 @@ $args = wp_parse_args($args, array('style' => ''));
 			</aside>
 			
 			<a href="<?php echo esc_url($url); ?>">
-				<h1 class="text-md md:text-lg leading-5 md:leading-6 font-bold">
+				<h1 class="text-md md:text-lg leading-5 md:leading-6 font-semibold">
 					<?php echo esc_html($title); ?>
 				</h1>
 			</a>

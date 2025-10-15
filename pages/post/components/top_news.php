@@ -18,7 +18,7 @@ $top_news_query = new WP_Query(array(
 ?>
 
 <aside class="w-[280px] inline-block">
-	<section id="trending" class="inline-block xl:sticky top-20 p-6 md:p-4 min-w-[300px] w-[95vw] lg:w-full bg-second_color_light dark:bg-second_color_dark rounded-2xl">
+	<section id="trending" class="inline-block xl:sticky top-20 p-6 md:p-4 min-w-[300px] w-[95vw] lg:w-full bg-second_color_light dark:bg-second_color_dark rounded-2xl sticky top-[65px]">
 		<div>
 			<h1 class="text-sm font-bold mb-4">TOPNYHEDER</h1>
 			<ul class="grid gap-2">

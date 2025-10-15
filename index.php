@@ -5,6 +5,7 @@
 	<div>
 
 		<div class="bg-body-background-main">
+			<?php get_template_part('src/components/latest_slider'); ?>
 			<?php get_template_part('src/components/breadcrumb'); ?>
 
 			<?php

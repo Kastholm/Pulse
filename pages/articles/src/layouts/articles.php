@@ -55,7 +55,7 @@ $is_archive = is_category() || is_tag() || is_archive();
 			?>
 				<?php if ($post_count == 1) : ?>
 					<!-- Første artikel - tager 2/3 af bredden på md+ -->
-					<div class="md:col-span-2 m-auto">
+					<div class="md:col-span-2 m-auto h-full">
 						<?php get_template_part('pages/articles/src/components/post_first_card'); ?>
 					</div>
 

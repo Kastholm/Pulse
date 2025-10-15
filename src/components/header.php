@@ -17,9 +17,9 @@ $site_logo = get_theme_mod('custom_logo');
 <?php wp_body_open(); ?>
 
 <header class="fixed md:relative z-40 w-screen min-h-[65px]">
-	<header class="flex fixed top-0 items-center justify-center gap-4 border-b bg-second_color_light dark:bg-second_color_dark px-4 md:px-6">
-		<nav class="h-16 content-center bg-second_color_light dark:bg-second_color_dark w-screen items-center justify-center">
-			<ul class="md:w-[1000px] bg-second_color_light dark:bg-second_color_dark !m-auto flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6 px-2 lg:pl-4">
+	<header class="flex fixed top-0 items-center justify-center gap-4 border-b bg-[#fbfbfb] dark:bg-second_color_dark px-4 md:px-6">
+		<nav class="h-16 content-center bg-[#fbfbfb] dark:bg-second_color_dark w-screen items-center justify-center">
+			<ul class="md:w-[1000px] bg-[#fbfbfb] dark:bg-second_color_dark !m-auto flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6 px-2 lg:pl-4">
 				
 				<!-- Logo -->
 				<li class="flex-shrink-0">
@@ -96,46 +96,21 @@ $site_logo = get_theme_mod('custom_logo');
 
 				<!-- Desktop Controls -->
 				<span class="hidden md:grid grid-cols-2 items-center ml-auto">
-					<!-- Dark Mode Toggle -->
-					<!-- <label for="darkModeToggle" class="ml-auto mr-4 cursor-pointer">
-						<input class="toggle-checkbox" aria-label="darkmodetoggle" id="darkModeToggle" type="checkbox">
-						<div class="toggle-slot">
-							<div class="sun-icon-wrapper">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffbb52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun iconify sun-icon">
-									<circle cx="12" cy="12" r="4"></circle>
-									<path d="M12 2v2"></path>
-									<path d="M12 20v2"></path>
-									<path d="m4.93 4.93 1.41 1.41"></path>
-									<path d="m17.66 17.66 1.41 1.41"></path>
-									<path d="M2 12h2"></path>
-									<path d="M20 12h2"></path>
-									<path d="m6.34 17.66-1.41 1.41"></path>
-									<path d="m19.07 4.93-1.41 1.41"></path>
-								</svg>
-							</div>
-							<div class="toggle-button"></div>
-							<div class="moon-icon-wrapper">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon iconify moon-icon">
-									<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-								</svg>
-							</div>
-						</div>
-					</label> -->
 					
 					<!-- Search Button -->
-					<a class="hidden lg:block" href="<?php echo esc_url(home_url('/search')); ?>">
-						<div>
-							<button type="submit" aria-label="Søg artikler" class="flex flex-end items-center bg-accent_color_dark dark:bg-bg-accent_color_light bg-opacity-80 justify-center w-12 h-12 rounded-lg">
-								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-								</svg>
-                </button>
-                    </div>
-					</a>
-				</span>
+                <button
+						onclick="toggleSearchBar()" 
+						aria-label="Søg artikler" 
+						class="hidden lg:flex items-center bg-accent_color_dark dark:bg-accent_color_light bg-opacity-80 justify-center w-12 h-12 rounded-lg hover:opacity-90 transition-opacity"
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+						</svg>
+					</button>
+                    </span>
 			</ul>
        </nav>
-    
+       
 
 		<!-- Mobile Menu Button -->
 		<button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 w-9 shrink-0 md:hidden ml-auto" data-state="closed" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMobileMenu()">
@@ -148,6 +123,42 @@ $site_logo = get_theme_mod('custom_logo');
 		</button>
 	</header>
 </header>
+
+<!-- Desktop Search Bar (Hidden by default) -->
+<div id="desktop-search-bar" class="fixed top-16 left-0 right-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-lg hidden">
+	<div class="max-w-[1000px] mx-auto px-6 py-4">
+		<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-4">
+			<div class="flex-1 relative">
+				<input 
+					type="search" 
+					name="s" 
+					placeholder="Søg artikler..." 
+					class="w-full px-4 py-3 pr-12 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent_color_light focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+					value="<?php echo esc_attr(get_search_query()); ?>"
+					autofocus
+				>
+				<button 
+					type="submit" 
+					aria-label="Søg artikler" 
+					class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+				>
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+					</svg>
+				</button>
+			</div>
+			<button 
+				type="button" 
+				onclick="toggleSearchBar()" 
+				class="px-4 py-3 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+			>
+				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+				</svg>
+			</button>
+		</form>
+	</div>
+</div>
 
 <!-- Mobile Menu -->
 <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden">
@@ -170,6 +181,27 @@ $site_logo = get_theme_mod('custom_logo');
 			</button>
 		</div>
 		
+		<!-- Mobile Search Form -->
+		<div class="mb-6">
+			<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+				<div class="flex gap-2">
+					<input 
+						type="search" 
+						name="s" 
+						placeholder="Søg artikler..." 
+						class="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent_color_light focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+						value="<?php echo esc_attr(get_search_query()); ?>"
+					>
+					<button 
+						type="submit" 
+						class="px-4 py-2 bg-accent_color_dark dark:bg-accent_color_light text-white rounded-lg hover:opacity-90 transition-opacity"
+					>
+						Søg
+					</button>
+				</div>
+			</form>
+		</div>
+
 		<nav class="grid gap-6 text-lg font-medium">
 			<?php
 			wp_nav_menu(array(
@@ -219,4 +251,35 @@ function toggleMobileMenu() {
 	const menu = document.getElementById('mobile-menu');
 	menu.classList.toggle('hidden');
 }
+
+function toggleSearchBar() {
+	const searchBar = document.getElementById('desktop-search-bar');
+	searchBar.classList.toggle('hidden');
+	
+	// Focus on input when search bar opens
+	if (!searchBar.classList.contains('hidden')) {
+		const input = searchBar.querySelector('input[type="search"]');
+		setTimeout(() => input.focus(), 100);
+	}
+}
+
+// Close search bar when clicking outside
+document.addEventListener('click', function(event) {
+	const searchBar = document.getElementById('desktop-search-bar');
+	const searchButton = event.target.closest('button[onclick="toggleSearchBar()"]');
+	
+	if (!searchBar.contains(event.target) && !searchButton && !searchBar.classList.contains('hidden')) {
+		searchBar.classList.add('hidden');
+	}
+});
+
+// Close search bar with Escape key
+document.addEventListener('keydown', function(event) {
+	if (event.key === 'Escape') {
+		const searchBar = document.getElementById('desktop-search-bar');
+		if (!searchBar.classList.contains('hidden')) {
+			searchBar.classList.add('hidden');
+		}
+	}
+});
 </script>

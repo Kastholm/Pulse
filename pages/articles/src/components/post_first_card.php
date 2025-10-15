@@ -21,7 +21,7 @@ $post_date = get_the_date('c');
 $post_date_formatted = get_the_date('Y-m-d\TH:i:s.v\Z');
 ?>
 
-<article class="shadow-sm bg-second_color_light dark:bg-second_color_dark rounded-lg relative h-full !m-auto">
+<article class="shadow-sm bg-second_color_light dark:bg-second_color_dark rounded-lg relative !h-[100%] m-auto" style="height: 100% !important;">
 	<figure class="block rounded-t-lg overflow-clip md:h-[20em] h-[14em]">
 		<a aria-label="Læs mere om artiklen" href="<?php echo esc_url($url); ?>">
 			<img 
@@ -37,10 +37,10 @@ $post_date_formatted = get_the_date('Y-m-d\TH:i:s.v\Z');
 		</a>
 	</figure>
 	
-	<div class="grid grid-rows-[auto_1fr] md:grid-rows-[auto_1fr_auto] mx-2 md:mx-4 mb-4 px-4 pb-4">
+	<div class="grid grid-rows-[auto_1fr] md:grid-rows-[auto_1fr_auto] mb-4 px-4 pb-4">
 		<aside class="sm:grid sm:grid-cols-2 align-middle mt-2 h-fit md:my-2">
 			<a href="<?php echo esc_url($category_permalink); ?>">
-				<p class="relative text-sm w-fit rounded-full py-1 my-1 font-medium text-accent_color_light dark:text-accent_color_dark hover:text-black dark:hover:text-gray-300">
+				<p class="bg-indigo-700 text-red-600 min-w-max w-fit rounded-full px-3 py-1 text-xs leading-4 no-underline hover:underline">
 					<?php echo esc_html($primary_category); ?>
 				</p>
 			</a>
@@ -60,10 +60,41 @@ $post_date_formatted = get_the_date('Y-m-d\TH:i:s.v\Z');
 		
 		<header class="md:min-h-[180px]">
 			<a href="<?php echo esc_url($url); ?>">
-				<h1 class="text-xl md:text-[2.3em] md:leading-10 font-extrabold rounded-lg line-clamp-3 overflow-hidden text-ellipsis">
+				<h1 class="text-xl md:text-[1.8em] md:leading-8 font-bold rounded-lg line-clamp-3 overflow-hidden text-ellipsis h-[90%]">
 					<?php echo esc_html($title); ?>
 				</h1>
 			</a>
+
+			<div class="flex items-center gap-2 text-xs">
+				<?php
+				// Get post author
+				$author_id = get_the_author_meta('ID');
+				$author_name = get_the_author();
+				$author_url = get_author_posts_url($author_id);
+				$author_avatar = get_avatar_url($author_id, array('size' => 24));
+				?>
+				
+				<a class="flex items-center gap-2 hover:text-accent_color_light dark:hover:text-accent_color_dark transition-colors" href="<?php echo esc_url($author_url); ?>">
+					<img class="size-6 rounded-full" src="<?php echo esc_url($author_avatar); ?>" alt="<?php echo esc_attr($author_name); ?>">
+					<?php echo esc_html($author_name); ?>
+				</a>
+				
+				<span>•</span>
+				
+				<time datetime="<?php echo esc_attr(get_the_date('c')); ?>" class="text-muted-foreground">
+					<?php echo get_the_date('j. F Y'); ?>
+				</time>
+				
+				<span>•</span>
+				
+				<span class="text-body-accent">
+					<?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' siden'; ?>
+				</span>
+			</div>
+
+
+
+			
 		</header>
 	</div>
 </article>

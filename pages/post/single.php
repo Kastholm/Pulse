@@ -64,7 +64,7 @@
 								'loading' => 'lazy'
 							)); ?>
 							<?php if (get_the_post_thumbnail_caption()) : ?>
-								<figcaption class="absolute text-xs lg:text-sm bottom-0 right-0 text-gray-300 p-1 bg-gray-400 bg-opacity-50">
+								<figcaption class="absolute text-xs lg:text-sm bottom-0 right-0 text-gray-300 p-1 bg-gray/50">
 									<?php echo get_the_post_thumbnail_caption(); ?>
 								</figcaption>
 							<?php endif; ?>
@@ -84,6 +84,8 @@
 			<section class="articleText leading-8 text-lg prose prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary">
 				<?php the_content(); ?>
 			</section>
+
+			<?php get_template_part('pages/post/components/social_media'); ?>
 
 			<!-- Tags -->
 			<?php

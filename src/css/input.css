@@ -58,6 +58,7 @@
   }
   * {
     box-sizing: border-box;
+    border-color: #e4e4e7;
     /* padding: 0; */
     /* margin: 0; */
     max-width: 100vw;
