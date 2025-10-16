@@ -8,7 +8,7 @@ $is_home = is_home() || is_front_page();
 $is_archive = is_category() || is_tag() || is_archive();
 ?>
 
-<section class="mb-lg gap-md md:flex md:flex-col">
+<section class="mb-lg gap-md grid">
 	<?php /* get_template_part('template-parts/partials/recent-news-slider'); */ ?>
 
 	<!-- Archive Header (only for categories/tags) -->
@@ -25,70 +25,73 @@ $is_archive = is_category() || is_tag() || is_archive();
 		</header>
 	<?php endif; ?>
 
-	<div>
-		<?php
-		$post_count = 0; // Initialize a counter
-		
-		// Use different queries based on page type
-		if ($is_home) {
-			// Home page - get latest posts
-			$query = new WP_Query(array(
-				'post_type' => 'post',
-				'post_count' => -1,
-				'posts_per_page' => 9,
-				'nopaging' => false,
-				'paged' => get_query_var('page'),
-				'ignore_sticky_posts' => true
-			));
-		} else {
-			// Archive pages (categories/tags) - use WordPress default query
-			global $wp_query;
-			$query = $wp_query;
-		}
-		?>
-		
-		<div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+	<div class="grid md:grid-cols-[auto_1fr] gap-8">
+		<!-- Venstre side - Artikler -->
+		<div class="space-y-6">
+			<?php
+			$post_count = 0; // Initialize a counter
+			
+			// Use different queries based on page type
+			if ($is_home) {
+				// Home page - get latest posts
+				$query = new WP_Query(array(
+					'post_type' => 'post',
+					'post_count' => -1,
+					'posts_per_page' => 9,
+					'nopaging' => false,
+					'paged' => get_query_var('page'),
+					'ignore_sticky_posts' => true
+				));
+			} else {
+				// Archive pages (categories/tags) - use WordPress default query
+				global $wp_query;
+				$query = $wp_query;
+			}
+			?>
+			
 			<?php
 			if ($query->have_posts()) :
 				while ($query->have_posts()) : $query->the_post();
 					$post_count++;
 			?>
 				<?php if ($post_count == 1) : ?>
-					<!-- Første artikel - tager 2/3 af bredden på md+ -->
-					<div class="md:col-span-2 m-auto h-full">
-						<?php get_template_part('pages/articles/src/components/post_first_card'); ?>
+					<!-- Post 1 - first_card_two -->
+					<?php get_template_part('pages/articles/src/components/post_first_card_two'); ?>
+
+				<?php elseif ($post_count == 2) : ?>
+					<!-- Post 2 - rectangle_two -->
+					<?php get_template_part('pages/articles/src/components/post_grid_card_rectangle_two'); ?>
+
+				<?php elseif ($post_count == 3) : ?>
+					<!-- Post 3 - square_two (start vertikal container) -->
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<?php get_template_part('pages/articles/src/components/post_grid_card_square_two'); ?>
+
+				<?php elseif ($post_count == 4) : ?>
+					<!-- Post 4 - square_two (slut vertikal container) -->
+					<?php get_template_part('pages/articles/src/components/post_grid_card_square_two'); ?>
 					</div>
 
-				<?php elseif ($post_count <= 3) : ?>
-					<!-- Artikler 2-3 - fylder den sidste 1/3 med lodret layout på md+ -->
-					<?php if ($post_count == 2) : ?>
-						<div class="lg:col-span-1 md:flex md:flex-col gap-4 md:gap-6">
-					<?php endif; ?>
-					<div class="md:flex-1 m-auto">
-						<?php get_template_part('pages/articles/src/components/post_grid_card'); ?>
-					</div>
-					<?php if ($post_count == 3) : ?>
-						</div>
-					<?php endif; ?>
-					
-				<?php else : ?>
-					<!-- Artikler 4+ - normale 3-kolonne grid på md+ -->
-					<?php if ($post_count == 4) : ?>
-						<!-- Start ny række med 3 kolonner på md+ -->
-						<div class="md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-4">
-					<?php endif; ?>
+				<?php elseif ($post_count == 5) : ?>
+					<!-- Post 5 - rectangle_two (start horizontal container) -->
 					<div>
-						<?php get_template_part('pages/articles/src/components/post_grid_card'); ?>
+						<?php get_template_part('pages/articles/src/components/post_grid_card_rectangle'); ?>
+
+				<?php elseif ($post_count == 6) : ?>
+					<!-- Post 6 - rectangle_two (slut horizontal container) -->
+					<?php get_template_part('pages/articles/src/components/post_grid_card_rectangle'); ?>
 					</div>
+
+				<?php elseif ($post_count == 7) : ?>
+					<!-- Post 7 - first_card_two -->
+					<?php get_template_part('pages/articles/src/components/post_first_card_two'); ?>
+
 				<?php endif; ?>
 			<?php
 				endwhile;
-				// Luk den sidste grid container hvis vi har flere end 4 artikler
-				if ($post_count > 4) : ?>
-					</div>
-				<?php endif; ?>
+				?>
 			<?php else : ?>
-				<div class="col-span-full text-center py-12">
+				<div class="text-center py-12">
 					<p class="text-lg text-gray-600 dark:text-gray-300">
 						<?php 
 						if ($is_home) {
@@ -100,6 +103,11 @@ $is_archive = is_category() || is_tag() || is_archive();
 					</p>
 				</div>
 			<?php endif; ?>
+		</div>
+		
+		<!-- Højre side - Bestemmes senere -->
+		<div class="hidden md:block">
+			<?php get_template_part('pages/post/src/components/top_news'); ?>
 		</div>
 	</div>
 </section>
