@@ -24,7 +24,7 @@ $post_date_formatted = get_the_date('Y-m-d\TH:i:s.v\Z');
 $args = wp_parse_args($args, array('style' => ''));
 ?>
 
-<article class="grid place-content-start gap-4 md:gap-8 md:mb-10 border-b-slate-100 dark:border-b-slate-600 border-b-[1px] pb-2 grid-cols-[auto_auto]">
+<article class="grid bg-white place-content-start gap-4 md:gap-8 md:mb-6 border-b-slate-100 dark:border-b-slate-600 border-b-[1px] pb-2 grid-cols-[auto_auto]">
 <figure class="relative max-w-[100px] md:max-w-none">
 		<a aria-label="Læs mere om artiklen" href="<?php echo esc_url($url); ?>">
 

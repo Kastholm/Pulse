@@ -24,7 +24,7 @@ $post_date_formatted = get_the_date('Y-m-d\TH:i:s.v\Z');
 $args = wp_parse_args($args, array('style' => ''));
 ?>
 
-<article class="shadow-md hover:shadow-lg transition-shadow rounded-lg group !m-auto sm:max-w-[350px]">
+<article class="shadow-md hover:shadow-lg transition-shadow bg-white rounded-lg group !m-auto sm:max-w-[350px]">
 	<figure class="block rounded-t-lg overflow-clip md:h-[8em] h-[14em]">
 		<a aria-label="Læs mere om artiklen" href="<?php echo esc_url($url); ?>">
 			<img 

@@ -20,44 +20,100 @@ $latest_posts_query = new WP_Query(array(
 ));
 ?>
 
-<section class="max-w-[1000px] mx-auto pt-2 md:pt-1">
-	<p class="text-lg relative flex font-bold mb-2">
-		<span class="py-1">Seneste nyt
-
-        <figure class="flex gap-[12px]">
-			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right font-black my-auto">
-				<path d="m9 18 6-6-6-6"></path>
-			</svg>
-		</figure>
-        </span>
-		
-	</p>
+<section class="max-w-[1000px] mx-auto pt-4 md:pt-6">
+	<!-- Header -->
+	<div class="flex items-center gap-2 mb-3">
+		<h2 class="text-sm md:text-base font-medium text-muted-foreground">Seneste nyt</h2>
+		<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground">
+			<path d="m9 18 6-6-6-6"></path>
+		</svg>
+	</div>
 	
+	<!-- Slider Container -->
 	<nav class="sliderNav">
-		<ul class="grid grid-cols-[12] overflow-x-scroll overflow-y-visible mb-6 ml-0" style="grid-template-columns: repeat(12, auto);">
-			<?php if ($latest_posts_query->have_posts()) : ?>
-				<?php while ($latest_posts_query->have_posts()) : $latest_posts_query->the_post(); ?>
-					<li class="min-w-[310px] min-h-[110px] relative border-t-2 border-second_color_dark dark:border-second_color_light my-4 pt-4 pr-4">
-						<span class="w-2 h-2 bg-second_color_dark dark:bg-main_color_light absolute rounded-full -top-[5px] left-0"></span>
-						<a href="<?php the_permalink(); ?>">
-							<time datetime="<?php echo esc_attr(get_the_date('c')); ?>" class="text-xs">
-								<span class="timeSpan flex gap-2 text-fade_color_light dark:text-fade_color_dark">
+		<div class="overflow-x-auto">
+			<ul class="flex gap-4 pb-2" style="width: max-content;">
+				<?php if ($latest_posts_query->have_posts()) : ?>
+					<?php while ($latest_posts_query->have_posts()) : $latest_posts_query->the_post(); ?>
+						<li class="flex-shrink-0 w-[280px] group">
+							<article class="relative  p-4 hover:shadow-md hover:border-gray-200 dark:hover:border-gray-600 transition-all duration-200 ease-out">
+								
+								<!-- Time & Category -->
+								<div class="flex items-center justify-between mb-2">
+									<time datetime="<?php echo esc_attr(get_the_date('c')); ?>" class="text-xs text-muted-foreground">
+										<?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' siden'; ?>
+									</time>
 									
-									<?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' siden'; ?>
-								</span>
-							</time>
-							<h2 class="text-[0.85rem] md:text-[0.9rem] line-clamp-3 overflow-hidden text-ellipsis mt-2 font-semibold text-text_main_color_dark dark:text-text_main_color_light">
-								<?php the_title(); ?>
-							</h2>
-						</a>
+									<?php
+									$categories = get_the_category();
+									if (!empty($categories)) :
+									?>
+										<a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>" 
+										   class="relative rounded-full bg-gray-200 px-2 py-1 font-small text-gray-600 hover:bg-gray-200">
+											<?php echo esc_html($categories[0]->name); ?>
+										</a>
+									<?php endif; ?>
+								</div>
+
+								<!-- Title -->
+								<h3 class="text-sm font-medium text-foreground leading-snug group-hover:text-accent_color_light dark:group-hover:text-accent_color_dark transition-colors duration-200 line-clamp-2">
+									<a href="<?php the_permalink(); ?>" class="block">
+										<?php the_title(); ?>
+									</a>
+								</h3>
+							</article>
+						</li>
+					<?php endwhile; ?>
+					<?php wp_reset_postdata(); ?>
+				<?php else : ?>
+					<li class="flex-shrink-0 w-[280px]">
+						<div class="bg-white dark:bg-gray-800  p-4 text-center">
+							<p class="text-xs text-muted-foreground">Ingen artikler fundet.</p>
+						</div>
 					</li>
-				<?php endwhile; ?>
-				<?php wp_reset_postdata(); ?>
-			<?php else : ?>
-				<li class="min-w-[310px] min-h-[110px] relative border-t-2 border-second_color_dark dark:border-second_color_light my-4 pt-4 pr-4">
-					<span class="text-sm text-gray-500 dark:text-gray-400">Ingen artikler fundet.</span>
-				</li>
-			<?php endif; ?>
-		</ul>
+				<?php endif; ?>
+			</ul>
+		</div>
 	</nav>
 </section>
+
+<style>
+/* Elegant scrollbar styling */
+.sliderNav div::-webkit-scrollbar {
+	height: 6px;
+}
+
+.sliderNav div::-webkit-scrollbar-track {
+	background: #f1f5f9;
+	border-radius: 3px;
+}
+
+.sliderNav div::-webkit-scrollbar-thumb {
+	background: #cbd5e1;
+	border-radius: 3px;
+}
+
+.sliderNav div::-webkit-scrollbar-thumb:hover {
+	background: #94a3b8;
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+	.sliderNav div::-webkit-scrollbar-track {
+		background: #374151;
+	}
+	
+	.sliderNav div::-webkit-scrollbar-thumb {
+		background: #6b7280;
+	}
+	
+	.sliderNav div::-webkit-scrollbar-thumb:hover {
+		background: #9ca3af;
+	}
+}
+
+/* Smooth scrolling */
+.sliderNav ul {
+	scroll-behavior: smooth;
+}
+</style>

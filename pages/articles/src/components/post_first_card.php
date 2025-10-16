@@ -21,7 +21,7 @@ $post_date = get_the_date('c');
 $post_date_formatted = get_the_date('Y-m-d\TH:i:s.v\Z');
 ?>
 
-<article class="shadow-sm bg-second_color_light dark:bg-second_color_dark rounded-lg relative !h-[100%] m-auto" style="height: 100% !important;">
+<article class="shadow-sm bg-white dark:bg-second_color_dark rounded-lg relative !h-[100%] m-auto" style="height: 100% !important;">
 	<figure class="block rounded-t-lg overflow-clip md:h-[20em] h-[14em]">
 		<a aria-label="Læs mere om artiklen" href="<?php echo esc_url($url); ?>">
 			<img 

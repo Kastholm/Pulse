@@ -8,7 +8,7 @@ $is_home = is_home() || is_front_page();
 $is_archive = is_category() || is_tag() || is_archive();
 ?>
 
-<section class="mb-lg gap-md grid">
+<section class="mb-lg gap-2 grid">
 	<?php /* get_template_part('template-parts/partials/recent-news-slider'); */ ?>
 
 	<!-- Archive Header (only for categories/tags) -->
@@ -25,7 +25,7 @@ $is_archive = is_category() || is_tag() || is_archive();
 		</header>
 	<?php endif; ?>
 
-	<div class="grid md:grid-cols-[auto_1fr] gap-8">
+	<div class="grid md:grid-cols-[auto_1fr] gap-4">
 		<!-- Venstre side - Artikler -->
 		<div class="space-y-6">
 			<?php
@@ -64,7 +64,7 @@ $is_archive = is_category() || is_tag() || is_archive();
 
 				<?php elseif ($post_count == 3) : ?>
 					<!-- Post 3 - square_two (start vertikal container) -->
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<?php get_template_part('pages/articles/src/components/post_grid_card_square_two'); ?>
 
 				<?php elseif ($post_count == 4) : ?>
