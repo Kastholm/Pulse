@@ -9,7 +9,7 @@ $current_post_id = get_the_ID();
 // Query for 5 latest posts excluding current post
 $top_news_query = new WP_Query(array(
 	'post_type' => 'post',
-	'posts_per_page' => 5,
+	'posts_per_page' => 3,
 	'post__not_in' => array($current_post_id),
 	'ignore_sticky_posts' => true,
 	'orderby' => 'date',
@@ -18,7 +18,7 @@ $top_news_query = new WP_Query(array(
 ?>
 
 <aside class="w-[280px] inline-block">
-	<section id="trending" class="inline-block xl:sticky top-20 p-6 md:p-4 min-w-[300px] w-[95vw] lg:w-full bg-second_color_light dark:bg-second_color_dark rounded-2xl sticky top-[65px]">
+	<section id="trending" class="inline-block xl:sticky p-6 md:p-4 min-w-[300px] w-[95vw] lg:w-full bg-second_color_light dark:bg-second_color_dark rounded-2xl sticky top-[65px]">
 		<div>
 			<h1 class="text-sm font-bold mb-4">TOPNYHEDER</h1>
 			<ul class="grid gap-2">

@@ -106,7 +106,7 @@ $is_archive = is_category() || is_tag() || is_archive();
 		</div>
 		
 		<!-- Højre side - Bestemmes senere -->
-		<div class="hidden md:block">
+		<div class="hidden md:block relative">
 			<?php get_template_part('pages/post/src/components/top_news'); ?>
 		</div>
 	</div>
