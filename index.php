@@ -1,8 +1,6 @@
 <?php get_template_part('src/components/header'); ?>
 <main class="px-4">
-	<div ad-id="23209726049/OpdateretDK/Article_1"></div>
-
-
+<div class="desktop" ad-id="23209726049/OpdateretDK/Leaderboard_1"></div>
 	<div>
 
 		<div class="bg-body-background-main">

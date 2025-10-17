@@ -28,6 +28,8 @@ $site_logo = get_theme_mod('custom_logo');
 </script>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<div ad-id="23209726049/OpdateretDK/Topbanner"></div>
+<div ad-id="23209726049/OpdateretDK/Mobile_Topbanner"></div>
 <header class="fixed md:relative z-40 w-screen min-h-[65px]">
 	<header class="flex fixed top-0 items-center justify-center gap-4 border-b bg-[#fbfbfb] dark:bg-second_color_dark px-4 md:px-6">
 		<nav class="h-16 content-center bg-[#fbfbfb] dark:bg-second_color_dark w-screen items-center justify-center">

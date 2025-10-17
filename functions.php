@@ -107,5 +107,8 @@ add_action( 'wp_enqueue_scripts', function() {
 
 //Shared media library for all sites
 add_filter('network-media-library/site_id', function ($site_id) {
-    return 1;
+	return 1;
 });
+
+
+require_once get_template_directory() . '/src/scripts/article_ads_generation.php';
