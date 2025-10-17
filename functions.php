@@ -107,3 +107,8 @@ add_action( 'wp_enqueue_scripts', function() {
 	remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 	remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 }, 20 );
+
+//Shared media library for all sites
+add_filter('network-media-library/site_id', function ($site_id) {
+    return 1;
+});
