@@ -30,7 +30,7 @@ $author_avatar = get_avatar_url($author_id, array('size' => 40));
 $args = wp_parse_args($args, array('style' => ''));
 ?>
 
-<article class="grid place-content-start bg-white gap-2 border-b-slate-100 dark:border-b-slate-600 border-b-[1px] pb-2 grid-cols-[auto]">
+<article class="grid place-content-start gap-2 border-b-slate-100 dark:border-b-slate-600 border-b-[1px] pb-2 grid-cols-[auto]">
 	<figure class="relative max-w-none block rounded-t-sm overflow-clip md:h-[10em] h-[14em]">
 		<a aria-label="Læs mere om artiklen" href="<?php echo esc_url($url); ?>">
 			<?php if (has_post_thumbnail()) : ?>
