@@ -1,5 +1,3 @@
-
-
 <div class="mx-auto articleSection grid relative lg:grid-cols-[1fr_1fr]">
 	<?php while (have_posts()) : the_post(); ?>
 		<article class="w-full lg:w-[700px] rounded-lg">

@@ -30,7 +30,7 @@ $author_avatar = get_avatar_url($author_id, array('size' => 40));
 $args = wp_parse_args($args, array('style' => ''));
 ?>
 
-<article class="grid place-content-start gap-2 bg-white border-b-slate-100 dark:border-b-slate-600 border-b-[1px] pb-2 grid-cols-[auto]">
+<article class="grid place-content-start gap-2 pb-2 grid-cols-[auto]">
 	<figure class="relative max-w-none block rounded-t-sm">
 		<a aria-label="Læs mere om artiklen" href="<?php echo esc_url($url); ?>">
 			<?php if (has_post_thumbnail()) : ?>
@@ -63,7 +63,7 @@ $args = wp_parse_args($args, array('style' => ''));
 				</span>
 			</time>
 			
-			<a class="relative rounded-full bg-gray-200 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-200" href="<?php echo esc_url($category_permalink); ?>">
+			<a class="categoryTag" href="<?php echo esc_url($category_permalink); ?>">
 				<?php echo esc_html($primary_category); ?>
 			</a>
 		</aside>

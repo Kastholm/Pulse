@@ -40,7 +40,7 @@ $post_date_formatted = get_the_date('Y-m-d\TH:i:s.v\Z');
 	<div class="grid grid-rows-[auto_1fr] md:grid-rows-[auto_1fr_auto] mb-4 px-4 pb-4">
 		<aside class="sm:grid sm:grid-cols-2 align-middle mt-2 h-fit md:my-2">
 			<a href="<?php echo esc_url($category_permalink); ?>">
-				<p class="bg-indigo-700 text-red-600 min-w-max w-fit rounded-full px-3 py-1 text-xs leading-4 no-underline hover:underline">
+				<p class=".categoryTag">
 					<?php echo esc_html($primary_category); ?>
 				</p>
 			</a>

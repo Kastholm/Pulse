@@ -14,11 +14,22 @@ $site_logo = get_theme_mod('custom_logo');
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/src/css/output.css">
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous"></script>
 <?php wp_head(); ?>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1VDGWJ4QF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1VDGWJ4QF0');
+</script>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-
+<div ad-id="/23209726049/OpdateretDK/Topbanner"></div>
+<div ad-id="/23209726049/OpdateretDK/Mobile_Topbanner"></div>
 <header class="fixed md:relative z-40 w-screen min-h-[65px]">
 	<header class="flex fixed top-0 items-center justify-center gap-4 border-b bg-[#fbfbfb] dark:bg-second_color_dark px-4 md:px-6">
 		<nav class="h-16 content-center bg-[#fbfbfb] dark:bg-second_color_dark w-screen items-center justify-center">

@@ -63,7 +63,7 @@ $args = wp_parse_args($args, array('style' => ''));
 				</span>
 			</time>
 			
-			<a class="relative rounded-full bg-gray-200 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-200" href="<?php echo esc_url($category_permalink); ?>">
+			<a class="categoryTag" href="<?php echo esc_url($category_permalink); ?>">
 				<?php echo esc_html($primary_category); ?>
 			</a>
 		</aside>
