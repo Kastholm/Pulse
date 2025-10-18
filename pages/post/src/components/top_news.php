@@ -27,15 +27,17 @@ $top_news_query = new WP_Query(array(
 					$counter = 1;
 					while ($top_news_query->have_posts()) : $top_news_query->the_post(); 
 					?>
-						<li class="flex items-center border-b-2 border-b-[#e2e8f0] dark:border-b-text_second_color_dark pb-2">
-							<article class="font-bold text-text_second_color_dark dark:text-text_second_color_light text-xl min-w-6">
-								<?php echo $counter; ?>
+						<li >
+							<article class="flex items-center border-b-2 border-b-[#e2e8f0] dark:border-b-text_second_color_dark pb-2 !bg-[#ffffff00]">
+								<span class="font-bold text-text_second_color_dark dark:text-text_second_color_light text-xl min-w-6">
+									<?php echo $counter; ?>
+								</span>
+								<a href="<?php the_permalink(); ?>">
+									<header class="ml-2 text-main_color_dark dark:text-main_color_light hover:text-accent_color_light dark:hover:text-accent_color_dark transition-colors text-sm">
+										<h2><?php the_title(); ?></h2>
+									</header>
+								</a>
 							</article>
-							<a href="<?php the_permalink(); ?>">
-								<header class="ml-2 text-main_color_dark dark:text-main_color_light hover:text-accent_color_light dark:hover:text-accent_color_dark transition-colors text-sm">
-									<h2><?php the_title(); ?></h2>
-								</header>
-							</a>
 						</li>
 					<?php 
 						$counter++;
