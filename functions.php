@@ -112,3 +112,4 @@ add_filter('network-media-library/site_id', function ($site_id) {
 
 
 require_once get_template_directory() . '/src/scripts/article_ads_generation.php';
+require_once get_template_directory() . '/src/scripts/skyscraper_ads_generation.php';

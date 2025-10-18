@@ -1,5 +1,5 @@
 <?php get_template_part('src/components/header'); ?>
-<main class="px-4">
+<main class="px-4 relative">
 <div class="desktop" ad-id="23209726049/OpdateretDK/Leaderboard_1"></div>
 	<div>
 
