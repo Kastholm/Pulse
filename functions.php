@@ -110,6 +110,12 @@ add_filter('network-media-library/site_id', function ($site_id) {
 	return 1;
 });
 
+add_theme_support('custom-logo', [
+	'height'      => 100,
+	'width'       => 400,
+	'flex-height' => true,
+	'flex-width'  => true,
+]);
 
 require_once get_template_directory() . '/src/scripts/article_ads_generation.php';
 require_once get_template_directory() . '/src/scripts/skyscraper_ads_generation.php';
