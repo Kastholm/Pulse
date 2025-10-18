@@ -1,6 +1,6 @@
 <?php get_template_part('src/components/header'); ?>
 <main class="px-4 relative">
-<div class="desktop" ad-id="23209726049/OpdateretDK/Leaderboard_1"></div>
+<div class="desktop" ad-id="/23209726049/OpdateretDK/Leaderboard_1"></div>
 	<div>
 
 		<div class="bg-body-background-main">
@@ -47,22 +47,6 @@
 </main>
 <?php
 ?>
-<script>
-  window.googletag = window.googletag || { cmd: [] };
-  console.log('googletag ✅', window.googletag);
-  googletag.cmd.push(function () {
-    document.querySelectorAll('[ad-id]').forEach((el, i) => {
-      const adUnit = el.getAttribute('ad-id');
-      const slotId = 'gpt-slot-' + i;
-      el.id = slotId;
-
-      googletag.defineSlot('/' + adUnit, null, slotId)
-        .addService(googletag.pubads());
-    });
-
-    googletag.enableServices();
-    googletag.display();
-  });
 </script>
 <?php
 get_template_part('src/components/footer');

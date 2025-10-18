@@ -62,7 +62,7 @@ $is_archive = is_category() || is_tag() || is_archive();
 					<!-- Post 2 - rectangle_two -->
 					<?php get_template_part('pages/articles/src/components/post_grid_card_rectangle_two'); ?>
 
-					<div class="mobile" ad-id="23209726049/OpdateretDK/Mobile_1"></div>
+					<div class="mobile" ad-id="/23209726049/OpdateretDK/Mobile_1"></div>
 
 				<?php elseif ($post_count == 3) : ?>
 					<!-- Post 3 - square_two (start vertikal container) -->
@@ -74,8 +74,8 @@ $is_archive = is_category() || is_tag() || is_archive();
 					<?php get_template_part('pages/articles/src/components/post_grid_card_square_two'); ?>
 					</div>
 
-					<div class="desktop" ad-id="23209726049/OpdateretDK/Leaderboard_2"></div>
-					<div class="mobile" ad-id="23209726049/OpdateretDK/Mobile_2"></div>
+					<div class="desktop" ad-id="/23209726049/OpdateretDK/Leaderboard_2"></div>
+					<div class="mobile" ad-id="/23209726049/OpdateretDK/Mobile_2"></div>
 
 				<?php elseif ($post_count == 5) : ?>
 					<!-- Post 5 - rectangle_two (start horizontal container) -->
@@ -91,8 +91,8 @@ $is_archive = is_category() || is_tag() || is_archive();
 					<!-- Post 7 - first_card_two -->
 					<?php get_template_part('pages/articles/src/components/post_first_card_two'); ?>
 
-					<div class="desktop" ad-id="23209726049/OpdateretDK/Leaderboard_3"></div>
-					<div class="mobile" ad-id="23209726049/OpdateretDK/Mobile_3"></div>
+					<div class="desktop" ad-id="/23209726049/OpdateretDK/Leaderboard_3"></div>
+					<div class="mobile" ad-id="/23209726049/OpdateretDK/Mobile_3"></div>
 
 				<?php endif; ?>
 			<?php
@@ -116,7 +116,7 @@ $is_archive = is_category() || is_tag() || is_archive();
 		<!-- Højre side - Bestemmes senere -->
 		<div class="hidden md:block relative">
 			<?php get_template_part('pages/post/src/components/top_news'); ?>
-			<div class="desktop" ad-id="23209726049/OpdateretDK/Desktop_1"></div>
+			<div class="desktop" ad-id="/23209726049/OpdateretDK/Desktop_1"></div>
 		</div>
 	</div>
 </section>

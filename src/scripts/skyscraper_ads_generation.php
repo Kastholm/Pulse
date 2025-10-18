@@ -34,7 +34,7 @@ function insert_skyscraper_adunit_script() {
 			}
 
 			var div160x600L = document.createElement("div");
-			div160x600L.dataset.adUnitId = "23209726049/OpdateretDK/Skyscraper_L";
+			div160x600L.dataset.adUnitId = "/23209726049/OpdateretDK/Skyscraper_L";
 			div160x600L.style.position = "sticky";
 			div160x600L.style.top = "150px";
 			div160x600L.style.height = "600px";
@@ -42,7 +42,7 @@ function insert_skyscraper_adunit_script() {
 			leftSticky.appendChild(div160x600L);
 
 			var div160x600R = document.createElement("div");
-			div160x600R.dataset.adUnitId = "23209726049/OpdateretDK/Skyscraper_R";
+			div160x600R.dataset.adUnitId = "/23209726049/OpdateretDK/Skyscraper_R";
 			div160x600R.style.position = "sticky";
 			div160x600R.style.top = "150px";
 			div160x600R.style.height = "600px";

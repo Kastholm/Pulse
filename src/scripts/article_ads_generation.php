@@ -4,7 +4,7 @@ function insert_article_adunit_script() {
     if(is_singular('post')){
         ?>
     <script>
-        const ad_unit_site = "23209726049/OpdateretDK";
+        const ad_unit_site = "/23209726049/OpdateretDK";
         const is_mobile = window.innerWidth < 576;
 		//Define CSS selector where article ad units should be displayed.
 		const selector = ".articleText > :not(div):not(h2):not(h3):not(h1)";
