@@ -20,8 +20,6 @@ function insert_skyscraper_adunit_script() {
             rightSticky.style.top = "20px";
 			rightSticky.style.height = contentElement.clientHeight - 375 + "px";
 			rightSticky.style.transition = 'transform 0.3s ease';
-            rightSticky.style.backgroundColor = "red";
-            leftSticky.style.backgroundColor = "blue";
 			
 			if(body.clientWidth >= contentElement.clientWidth + 600) {
 				leftSticky.style.width = "300px";
