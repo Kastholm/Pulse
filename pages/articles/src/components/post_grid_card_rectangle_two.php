@@ -18,7 +18,7 @@ $post_time = get_the_time('H:i');
 $post_date_c = get_the_date('c');
 ?>
 
-<article class="bg-indigo-200 dark:bg-second_color_dark p-4 rounded-sm shadow-sm hover:shadow-md transition-shadow">
+<article class="!bg-indigo-200 dark:!bg-indigo-900 p-4 rounded-sm shadow-sm hover:shadow-md transition-shadow">
 	<a aria-label="Læs mere om artiklen" href="<?php echo esc_url($url); ?>">
 		<header class="flex items-center gap-x-2 text-xs mb-2">
 			<span class="uppercase font-semibold text-accent_color_light dark:text-accent_color_dark">

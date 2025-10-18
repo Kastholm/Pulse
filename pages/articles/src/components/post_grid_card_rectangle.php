@@ -24,13 +24,13 @@ $post_date_formatted = get_the_date('Y-m-d\TH:i:s.v\Z');
 $args = wp_parse_args($args, array('style' => ''));
 ?>
 
-<article class="grid bg-white place-content-start gap-4 md:gap-8 md:mb-6 border-b-slate-100 dark:border-b-slate-600 border-b-[1px] pb-2 grid-cols-[auto_auto]">
+<article class="grid bg-white place-content-start gap-4 md:gap-8 md:mb-6 grid-cols-[auto_auto]">
 <figure class="relative max-w-[100px] md:max-w-none">
 		<a aria-label="Læs mere om artiklen" href="<?php echo esc_url($url); ?>">
 
 			<?php if (has_post_thumbnail()) : ?>
 				<img alt="<?php echo esc_attr($title); ?>" loading="lazy" width="150" height="150" decoding="async" data-nimg="1" 
-				class="block rounded-lg inset-0 bg-gray-300 min-h-[120px] object-cover" sizes="(max-width: 768px) 100vw, 1000px" 
+				class="block rounded-lg inset-0 bg-gray-300 min-h-[120px] h-full object-cover" sizes="(max-width: 768px) 100vw, 1000px" 
 				style="color: transparent; max-width: 120px;" src="<?php echo esc_url($image_medium); ?>">
 			<?php else : ?>
 				<div class="block rounded-lg inset-0 bg-gray-300 max-h-[120px] md:max-w-[120px] object-cover items-center justify-center">
@@ -41,7 +41,7 @@ $args = wp_parse_args($args, array('style' => ''));
 	</figure>
 	
 	<div>
-		<aside class="flex flex-col md:flex-row items-start md:items-center gap-y-2 md:gap-y-0 gap-x-4 text-xs">
+		<aside class="flex flex-col md:flex-row items-start md:items-center gap-y-2 md:gap-y-0 gap-x-4 text-xs pt-2">
 			<time datetime="<?php echo esc_attr($post_date); ?>" class="text-gray-500 hidden md:inline-block">
 				<span class="timeSpan flex gap-2 text-fade_color_light dark:text-fade_color_dark">
 					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock my-auto text-fade_color_light dark:text-fade_color_dark">
@@ -52,7 +52,7 @@ $args = wp_parse_args($args, array('style' => ''));
 				</span>
 			</time>
 			
-			<a class="relative rounded-full bg-gray-200 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-200" href="<?php echo esc_url($category_permalink); ?>">
+			<a class="categoryTag" href="<?php echo esc_url($category_permalink); ?>">
 				<?php echo esc_html($primary_category); ?>
 			</a>
 		</aside>
@@ -70,9 +70,6 @@ $args = wp_parse_args($args, array('style' => ''));
 				</h2>
 			<?php endif; ?>
 		</header>
-		
-		<aside class="hidden" data-ad-unit-id=""></aside>
-		<aside class="hidden" data-ad-unit-id=""></aside>
 	</div>
 </article>
 
