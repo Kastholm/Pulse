@@ -1,7 +1,3 @@
-@import "../../pages/post/src/css/style.css";
-@import "../../pages/articles/src/css/style.css";
-@import "tailwindcss";
-
 :root {
   --main-color-light: #fafafa;
   --second-color-light: #ffffff;
@@ -16,6 +12,8 @@
   --accent-color-dark: oklch(35.9% 0.144 278.697); /* indigo-900 */
 
 }
+@import "tailwindcss";
+@import "../../pages/post/src/css/style.css";
 
 
 .font-inter {
@@ -59,10 +57,10 @@
     @apply bg-[var(--main-color-light)] dark:bg-[var(--main-color-dark)];
   }
   article:not(:has(.articleText)) {
-    @apply bg-[var(--second-color-light)] dark:bg-[var(--second-color-dark)] text-[var(--text-main-color-light)] dark:text-[var(--text-main-color-dark)] rounded-sm;
+    @apply bg-[var(--second-color-light)] dark:bg-[var(--second-color-dark)] text-[var(--main-color-light)] dark:text-[var(--main-color-dark)] rounded-sm;
     @apply border-b-[var(--third-color-light)] dark:border-b-[var(--third-color-dark)] border-b-[1px];
     .categoryTag {
-      @apply relative rounded-full bg-[var(--fourth-color-light)] dark:bg-[var(--fourth-color-dark)] px-3 py-1.5 font-medium text-[var(--text-second-color-light)] dark:text-[var(--text-second-color-dark)] hover:bg-[var(--fourth-color-light)] dark:hover:bg-[var(--fourth-color-dark)];
+      @apply relative rounded-full bg-[var(--fourth-color-light)] dark:bg-[var(--fourth-color-dark)] px-3 py-1.5 font-medium text-[var(--second-color-light)] dark:text-[var(--second-color-dark)] hover:bg-[var(--fourth-color-light)] dark:hover:bg-[var(--fourth-color-dark)];
     }
   }
   main {
@@ -155,7 +153,7 @@
     text-align: center;
     clear: right;
     display: block;
-    @apply text-[var(--text-main-color-dark)] dark:text-[var(--text-main-color-light)];
+    @apply text-[var(--main-color-dark)] dark:text-[var(--main-color-light)];
     letter-spacing: 2px;
     text-transform: uppercase;
   }
@@ -184,7 +182,7 @@
       text-align: center;
       clear: right;
       display: block;
-      @apply text-[var(--text-main-color-dark)] dark:text-[var(--text-main-color-light)];
+      @apply text-[var(--main-color-dark)] dark:text-[var(--main-color-light)];
       letter-spacing: 2px;
       text-transform: uppercase;
     }

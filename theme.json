@@ -1,45 +1,5 @@
 {
 	"settings": {
-		"appearanceTools": true,
-		"color": {
-			"defaultPalette": false,
-			"palette": [
-				{
-					"color": "#000000",
-					"name": "Primary",
-					"slug": "primary"
-				},
-				{
-					"color": "#E9EFF2",
-					"name": "secondary",
-					"slug": "Secondary"
-				},
-				{
-					"color": "#3D66AF",
-					"name": "accent",
-					"slug": "accent"
-				},
-				{
-					"color": "#f9fafb",
-					"name": "Negative",
-					"slug": "negative"
-				},
-				{
-					"color": "#f5f5f5",
-					"name": "Knockout",
-					"slug": "knockout"
-				},
-				{
-					"color": "#030712",
-					"name": "Typography",
-					"slug": "typography"
-				},
-				{
-					"color": "#FFFFFF",
-					"name": "White",
-					"slug": "white"
-				}
-			]
-		}
+		"appearanceTools": true
 	}
 }
