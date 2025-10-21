@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@import "../../pages/post/src/css/style.css";
+
 :root {
   --main-color-light: #fafafa;
   --second-color-light: #ffffff;
@@ -12,8 +15,6 @@
   --accent-color-dark: oklch(35.9% 0.144 278.697); /* indigo-900 */
 
 }
-@import "tailwindcss";
-@import "../../pages/post/src/css/style.css";
 
 
 .font-inter {

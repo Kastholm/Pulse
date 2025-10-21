@@ -1,17 +1,5 @@
 /*! tailwindcss v4.1.14 | MIT License | https://tailwindcss.com */
 @layer properties;
-:root {
-  --main-color-light: #fafafa;
-  --second-color-light: #ffffff;
-  --third-color-light: oklch(96.8% 0.007 247.896);
-  --fourth-color-light: oklch(92.8% 0.006 264.531);
-  --accent-color-light: oklch(87% 0.065 274.039);
-  --main-color-dark: #000000;
-  --second-color-dark: oklch(21% 0.006 285.885);
-  --third-color-dark: oklch(27.4% 0.006 286.033);
-  --fourth-color-dark: oklch(44.2% 0.017 285.786);
-  --accent-color-dark: oklch(35.9% 0.144 278.697);
-}
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -1981,6 +1969,18 @@
   .flex-350px {
     flex-direction: column;
   }
+}
+:root {
+  --main-color-light: #fafafa;
+  --second-color-light: #ffffff;
+  --third-color-light: oklch(96.8% 0.007 247.896);
+  --fourth-color-light: oklch(92.8% 0.006 264.531);
+  --accent-color-light: oklch(87% 0.065 274.039);
+  --main-color-dark: #000000;
+  --second-color-dark: oklch(21% 0.006 285.885);
+  --third-color-dark: oklch(27.4% 0.006 286.033);
+  --fourth-color-dark: oklch(44.2% 0.017 285.786);
+  --accent-color-dark: oklch(35.9% 0.144 278.697);
 }
 .font-inter {
   font-family: 'Lora', serif;
