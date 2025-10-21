@@ -70,8 +70,8 @@ if (is_category()) {
 }
 ?>
 
-<nav class="flex max-w-[1000px] m-auto text-fade_color_light dark:text-fade_color_dark pb-6 rounded-lg" aria-label="Breadcrumb">
-	<ol class="inline-flex items-center space-x-1 md:space-x-3">
+<nav class="flex max-w-[1000px] m-auto text-fade_color_light dark:text-fade_color_dark pb-6 rounded-lg overflow-hidden" aria-label="Breadcrumb">
+	<ol class="inline-flex items-center space-x-1 md:space-x-3 min-w-0 flex-1">
 		<?php foreach ($breadcrumb_items as $index => $item) : ?>
 			<?php if ($index > 0) : ?>
 				<!-- Separator -->
@@ -84,10 +84,10 @@ if (is_category()) {
 				</li>
 			<?php endif; ?>
 			
-			<li class="<?php echo $item['current'] ? 'cursor-default' : 'inline-flex items-center'; ?>" <?php echo $item['current'] ? 'aria-current="page"' : ''; ?>>
+			<li class="<?php echo $item['current'] ? 'cursor-default min-w-0' : 'inline-flex items-center flex-shrink-0'; ?>" <?php echo $item['current'] ? 'aria-current="page"' : ''; ?>>
 				<?php if ($item['current']) : ?>
-					<!-- Current page (no link) -->
-					<span class="text-accent_color_light dark:text-accent_color_dark text-sm font-medium capitalize">
+					<!-- Current page (no link) with ellipsis -->
+					<span class="text-accent_color_light dark:text-accent_color_dark text-sm font-medium capitalize truncate block" title="<?php echo esc_attr($item['title']); ?>">
 						<?php echo esc_html($item['title']); ?>
 					</span>
 				<?php else : ?>
@@ -95,7 +95,7 @@ if (is_category()) {
 					<a class="text-sm text-fade_color_light dark:text-fade_color_dark hover:text-gray-900 dark:hover:text-gray-400 inline-flex items-center" href="<?php echo esc_url($item['url']); ?>">
 						<?php if ($index === 0) : ?>
 							<!-- Home icon for first item -->
-							<svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+							<svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 								<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
 							</svg>
 						<?php endif; ?>
