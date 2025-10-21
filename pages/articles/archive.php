@@ -1,1 +1,0 @@
-<?php get_template_part('pages/articles/src/layouts/articles'); ?>

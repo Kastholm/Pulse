@@ -58,7 +58,7 @@ add_action( 'after_setup_theme', function() {
 
 add_action( 'wp_enqueue_scripts', function() {
   // Enqueue the main compiled CSS file
-  wp_enqueue_style( 'pulse-main-css', get_template_directory_uri() . '/src/css/output.css', [], wp_get_theme()->get('Version') );
+  wp_enqueue_style( 'pulse-main-css', get_template_directory_uri() . '/src/stylesheets/tailwindcss/output.css', [], wp_get_theme()->get('Version') );
   
   // Also enqueue the theme's style.css for WordPress theme detection
   wp_enqueue_style( 'pulse-style', get_stylesheet_uri(), [], wp_get_theme()->get('Version') );
