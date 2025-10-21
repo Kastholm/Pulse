@@ -1,26 +1,26 @@
-<?php get_template_part('src/components/header'); ?>
+<?php get_template_part('src/components/base/header'); ?>
 <main class="px-4 relative">
 <div class="desktop" ad-id="/23209726049/OpdateretDK/Leaderboard_1"></div>
 	<div>
 
 		<div class="bg-body-background-main">
 			<?php /* get_template_part('src/components/latest_slider'); */ ?>
-			<?php get_template_part('src/components/breadcrumb'); ?>
+			<?php get_template_part('src/components/atoms/breadcrumb'); ?>
 
 			<?php
 			// Dynamically load different content based on the page type
 			if (is_front_page()) {
-				get_template_part('pages/articles/home');
+				get_template_part('pages/home');
 			} elseif (is_date()) {
-				get_template_part('pages/articles/archive-dates');
+				get_template_part('pages/archive-dates');
 			} elseif (is_archive()) {
-				get_template_part('pages/articles/archive');
+				get_template_part('pages/archive');
 			} elseif (is_search()) {
-				get_template_part('pages/articles/search');
+				get_template_part('pages/search');
 			} elseif (is_single()) {
 				get_template_part('pages/post/single');
 			} elseif (is_page()) {
-				get_template_part('pages/articles/page');
+				get_template_part('pages/page');
 			}
 			?>
 
@@ -49,4 +49,4 @@
 ?>
 </script>
 <?php
-get_template_part('src/components/footer');
+get_template_part('src/components/base/footer');

@@ -83,7 +83,7 @@
 				<?php the_content(); ?>
 			</section>
 
-			<?php get_template_part('pages/post/src/components/social_media'); ?>
+			<?php get_template_part('src/components/atoms/post/social_media'); ?>
 
 			<!-- Tags -->
 			<?php
@@ -103,5 +103,5 @@
 			<?php endif; ?>
 		</article>
 	<?php endwhile; ?>
-	<?php get_template_part('pages/post/src/components/top_news'); ?>
+	<?php get_template_part('src/components/atoms/post/top_news'); ?>
           </div>
