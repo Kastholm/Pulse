@@ -61,7 +61,7 @@
     @apply bg-[var(--second-color-light)] dark:bg-[var(--second-color-dark)] text-[var(--main-color-light)] dark:text-[var(--main-color-dark)] rounded-sm;
     @apply border-b-[var(--third-color-light)] dark:border-b-[var(--third-color-dark)] border-b-[1px];
     .categoryTag {
-      @apply relative rounded-full bg-[var(--fourth-color-light)] dark:bg-[var(--fourth-color-dark)] px-3 py-1.5 font-medium text-[var(--second-color-light)] dark:text-[var(--second-color-dark)] hover:bg-[var(--fourth-color-light)] dark:hover:bg-[var(--fourth-color-dark)];
+      @apply relative rounded-full bg-[var(--fourth-color-light)] dark:bg-[var(--fourth-color-dark)] px-3 py-1.5 font-medium text-[var(--second-color-dark)] dark:text-[var(--second-color-light)] hover:bg-[var(--fourth-color-light)] dark:hover:bg-[var(--fourth-color-dark)];
     }
   }
   main {

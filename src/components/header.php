@@ -31,9 +31,9 @@ $site_logo = get_theme_mod('custom_logo');
 <div ad-id="/23209726049/OpdateretDK/Topbanner"></div>
 <div ad-id="/23209726049/OpdateretDK/Mobile_Topbanner"></div>
 <header class="fixed md:relative z-40 w-screen min-h-[65px]">
-	<header class="flex fixed top-0 items-center justify-center gap-4 border-b !border-b-zinc-800 bg-zinc-900 px-4 md:px-6">
-		<nav class="h-16 content-center bg-zinc-900 w-screen items-center justify-center">
-			<ul class="md:w-[1000px] bg-zinc-900 !m-auto flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6 px-2 lg:pl-4">
+	<header class="flex fixed top-0 items-center justify-center gap-4 border-b !border-b-zinc-800 bg-[var(--second-color-dark)] px-4 md:px-6">
+		<nav class="h-16 content-center bg-[var(--second-color-dark)] w-screen items-center justify-center">
+			<ul class="md:w-[1000px] bg-[var(--second-color-dark)] !m-auto flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6 px-2 lg:pl-4">
 				
 				<!-- Logo -->
 				<li class="flex-shrink-0">
@@ -115,7 +115,7 @@ $site_logo = get_theme_mod('custom_logo');
                 <button
 						onclick="toggleSearchBar()" 
 						aria-label="Søg artikler" 
-						class="hidden lg:flex items-center bg-accent_color_dark dark:bg-accent_color_light bg-opacity-80 justify-center w-12 h-12 rounded-lg hover:opacity-90 transition-opacity text-[#fbfbfb]"
+						class="hidden lg:flex items-center bg-[var(--main-color-dark)] dark:bg-[var(--main-color-light)] bg-opacity-80 justify-center w-12 h-12 rounded-lg hover:opacity-90 transition-opacity text-[#fbfbfb]"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="#fbfbfb" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -139,7 +139,7 @@ $site_logo = get_theme_mod('custom_logo');
 </header>
 
 <!-- Desktop Search Bar (Hidden by default) -->
-<div id="desktop-search-bar" class="fixed top-16 left-0 right-0 z-50 bg-zinc-900 border-b border-gray-200 dark:border-gray-700 shadow-lg hidden">
+<div id="desktop-search-bar" class="fixed top-16 left-0 right-0 z-50 bg-[var(--second-color-dark)] border-b border-gray-200 dark:border-gray-700 shadow-lg hidden">
 	<div class="max-w-[1000px] mx-auto px-6 py-4">
 		<form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-4">
 			<div class="flex-1 relative">
@@ -147,7 +147,7 @@ $site_logo = get_theme_mod('custom_logo');
 					type="search" 
 					name="s" 
 					placeholder="Søg artikler..." 
-					class="w-full px-4 py-3 pr-12 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent_color_light focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
+					class="w-full px-4 py-3 pr-12 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--accent-color-light)] focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
 					value="<?php echo esc_attr(get_search_query()); ?>"
 					autofocus
 				>
@@ -176,7 +176,7 @@ $site_logo = get_theme_mod('custom_logo');
 
 <!-- Mobile Menu -->
 <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden">
-	<div class="fixed right-0 top-0 h-full w-64 bg-zinc-900 dark:bg-gray-800 p-6">
+	<div class="fixed right-0 top-0 h-full w-64 bg-[var(--second-color-dark)] dark:bg-gray-800 p-6">
 		<div class="flex items-center justify-between mb-6">
 			<?php if ($site_logo) : ?>
 				<a href="<?php echo esc_url($site_url); ?>" class="flex items-center gap-2">
@@ -203,12 +203,12 @@ $site_logo = get_theme_mod('custom_logo');
 						type="search" 
 						name="s" 
 						placeholder="Søg artikler..." 
-						class="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent_color_light focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
+						class="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--accent-color-light)] focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
 						value="<?php echo esc_attr(get_search_query()); ?>"
 					>
 					<button 
 						type="submit" 
-						class="px-4 py-2 bg-accent_color_dark dark:bg-accent_color_light text-white rounded-lg hover:opacity-90 transition-opacity"
+						class="px-4 py-2 bg-[var(--accent-color-dark)] dark:bg-[var(--accent-color-light)] text-[var(--second-color-light)] dark:text-[var(--second-color-dark)] rounded-lg hover:opacity-90 transition-opacity"
 					>
 						Søg
 					</button>
