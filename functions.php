@@ -123,3 +123,87 @@ add_theme_support('custom-logo', [
 require_once get_template_directory() . '/src/scripts/article_ads_generation.php';
 require_once get_template_directory() . '/src/scripts/skyscraper_ads_generation.php';
 require_once get_template_directory() . '/src/scripts/websail_ad_script.php';
+
+/**
+ * Custom RSS Feed
+ */
+add_action('init', function() {
+    add_feed('custom', 'custom_rss_feed');
+    
+    // Sitemap routes - Standard structure with .xml extensions
+    add_rewrite_rule('^sitemap\.xml$', 'index.php?sitemap=index', 'top');
+    add_rewrite_rule('^post-sitemap(\d+)?\.xml$', 'index.php?sitemap=posts&sitemap_page=$matches[1]', 'top');
+    add_rewrite_rule('^page-sitemap\.xml$', 'index.php?sitemap=pages', 'top');
+    add_rewrite_rule('^category-sitemap\.xml$', 'index.php?sitemap=categories', 'top');
+    add_rewrite_rule('^tags-sitemap\.xml$', 'index.php?sitemap=tags', 'top');
+    add_rewrite_rule('^author-sitemap\.xml$', 'index.php?sitemap=authors', 'top');
+});
+
+if (!function_exists('custom_rss_feed')) {
+    function custom_rss_feed() {
+        get_template_part('inc/feeds/rss');
+    }
+}
+
+// Sitemap handler
+add_action('template_redirect', function() {
+    if (isset($_GET['sitemap'])) {
+        $sitemap_type = sanitize_text_field($_GET['sitemap']);
+        $sitemap_page = isset($_GET['sitemap_page']) ? intval($_GET['sitemap_page']) : 1;
+        
+        switch ($sitemap_type) {
+            case 'index':
+                get_template_part('inc/sitemaps/sitemap-index');
+                exit;
+            case 'posts':
+                // Pass page number to posts sitemap for pagination
+                set_query_var('sitemap_page', $sitemap_page);
+                get_template_part('inc/sitemaps/post-sitemap');
+                exit;
+            case 'pages':
+                get_template_part('inc/sitemaps/page-sitemap');
+                exit;
+            case 'categories':
+                get_template_part('inc/sitemaps/category-sitemap');
+                exit;
+            case 'tags':
+                get_template_part('inc/sitemaps/tags-sitemap');
+                exit;
+            case 'authors':
+                get_template_part('inc/sitemaps/author-sitemap');
+                exit;
+        }
+    }
+});
+
+/**
+ * RSS Feed Enhancements
+ */
+// Add featured image to RSS
+add_action('rss2_item', function() {
+    if (has_post_thumbnail()) {
+        echo '<enclosure url="' . esc_url(get_the_post_thumbnail_url(null, 'large')) . '" type="image/jpeg" />';
+    }
+});
+
+// Add custom fields to RSS
+add_action('rss2_item', function() {
+    $custom_fields = get_post_custom();
+    if (!empty($custom_fields)) {
+        foreach ($custom_fields as $key => $values) {
+            if (strpos($key, '_') !== 0) { // Skip private fields
+                foreach ($values as $value) {
+                    echo '<' . esc_attr($key) . '><![CDATA[' . esc_html($value) . ']]></' . esc_attr($key) . '>';
+                }
+            }
+        }
+    }
+});
+
+// Customize RSS excerpt length
+add_filter('excerpt_length', function($length) {
+    if (is_feed()) {
+        return 55; // Shorter for RSS
+    }
+    return $length;
+});
