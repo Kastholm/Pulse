@@ -47,3 +47,4 @@
 </main>
 <?php
 get_template_part('src/components/base/footer');
+?>
