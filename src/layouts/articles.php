@@ -36,10 +36,8 @@ $is_archive = is_category() || is_tag() || is_archive();
 				// Home page - get latest posts
 				$query = new WP_Query(array(
 					'post_type' => 'post',
-					'post_count' => -1,
-					'posts_per_page' => 9,
-					'nopaging' => false,
-					'paged' => get_query_var('page'),
+					'posts_per_page' => 7,
+					'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
 					'ignore_sticky_posts' => true
 				));
 			} else {
@@ -122,15 +120,15 @@ $is_archive = is_category() || is_tag() || is_archive();
 </section>
 
 <!-- Pagination -->
-<?php if ($query->have_posts()) : ?>
+<?php if ($query->max_num_pages > 1) : ?>
 	<nav class="pagination-wrapper mt-12">
 		<?php
 		if ($is_home) {
 			// Custom pagination for home page
 			echo paginate_links(array(
 				'total' => $query->max_num_pages,
-				'current' => max(1, get_query_var('page')),
-				'format' => '?page=%#%',
+				'current' => max(1, get_query_var('paged')),
+				'format' => '?paged=%#%',
 				'mid_size' => 2,
 				'prev_text' => __('← Forrige', 'pulse'),
 				'next_text' => __('Næste →', 'pulse'),

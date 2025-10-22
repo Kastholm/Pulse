@@ -46,7 +46,5 @@
 	</div>
 </main>
 <?php
-?>
-</script>
-<?php
 get_template_part('src/components/base/footer');
+?>
