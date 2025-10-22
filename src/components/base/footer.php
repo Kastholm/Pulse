@@ -10,7 +10,7 @@ $current_year = date('Y');
 
 <footer class="bg-second_color_light dark:bg-second_color_dark relative z-50 shadow" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto !max-w-[1000px] px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-32">
+    <div style="max-width: 1000px;" class="mx-auto px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="grid grid-cols-2 gap-8 xl:col-span-2">
                 
