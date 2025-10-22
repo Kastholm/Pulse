@@ -94,7 +94,7 @@
 					<span class="text-xs lg:text-sm">Artiklens Tags: </span>
 					<?php foreach ($tags as $tag) : ?>
 						<a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">
-							<button class="text-xs lg:text-sm text-fade_color_light dark:text-fade_color_dark relative rounded-full bg-gray-100 px-3 py-1.5 font-medium hover:bg-gray-100">
+							<button class="text-xs font-semibold lg:text-sm text-fade_color_light dark:text-fade_color_dark relative rounded-full bg-[var(--third-color-light)] dark:bg-[var(--third-color-dark)] px-3 py-1.5 hover:bg-gray-100">
 								<?php echo esc_html($tag->name); ?>
 							</button>
 						</a>
