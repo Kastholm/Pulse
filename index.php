@@ -24,13 +24,6 @@
 			}
 			?>
 
-
-			<?php if (is_front_page()) : ?>
-				<div <?php /* echo mxn_content_class('p-base'); */ ?>>
-					<?php echo the_content(); ?>
-				</div>
-			<?php endif; ?>
-
 			<?php if (is_tag()) : ?>
 				<div <?php /* echo mxn_content_class('p-base'); */ ?>>
 					<?php echo tag_description(); ?>
