@@ -142,13 +142,13 @@ function filter_content_blocks($content) {
             <?php endif; ?>
             
             <?php if ($featured_image) : ?>
-            <enclosure url="<?php echo esc_url($featured_image); ?>" file="<?php echo esc_url($featured_image); ?>" size="<?php echo $image_size; ?>" type="image/jpeg" />
+            <enclosure url="<?php echo esc_url($featured_image); ?>" length="<?php echo $image_size; ?>" type="<?php echo pathinfo($featured_image, PATHINFO_EXTENSION) === 'webp' ? 'image/webp' : 'image/jpeg'; ?>" />
             
             <media:content url="<?php echo esc_url($featured_image); ?>" 
                           width="<?php echo $image_width; ?>" 
                           height="<?php echo $image_height; ?>" 
                           medium="image" 
-                          type="image/jpeg">
+                          type="<?php echo pathinfo($featured_image, PATHINFO_EXTENSION) === 'webp' ? 'image/webp' : 'image/jpeg'; ?>">
                 <media:copyright><?php echo escape_xml($site_name); ?></media:copyright>
                 <media:title><?php echo escape_xml($post_title); ?></media:title>
                 <media:description type="html"><![CDATA[<?php echo $post_title; ?>]]></media:description>
