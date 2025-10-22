@@ -93,7 +93,7 @@ $site_logo = get_theme_mod('custom_logo');
 							}
 							
 							$item_output = isset($args->before) ? $args->before : '';
-							$item_output .= '<a class="transition-colors hover:text-white hidden md:inline-block text-[var(--main-color-light)] ' . $current_class . '"' . $attributes .'>';
+							$item_output .= '<a style="color: var(--main-color-light) !important;" class="transition-colors hover:text-white hidden md:inline-block text-[var(--main-color-light)] ' . $current_class . '"' . $attributes .'>';
 							$item_output .= (isset($args->link_before) ? $args->link_before : '') . apply_filters('the_title', $item->title, $item->ID) . (isset($args->link_after) ? $args->link_after : '');
 							$item_output .= '</a>';
 							$item_output .= isset($args->after) ? $args->after : '';
@@ -240,7 +240,7 @@ $site_logo = get_theme_mod('custom_logo');
 						$attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url        ) .'"' : '';
 						
 						$item_output = isset($args->before) ? $args->before : '';
-						$item_output .= '<a class="block text-[#fbfbfb] hover:text-white transition-colors"' . $attributes .'>';
+						$item_output .= '<a style="color: var(--main-color-light) !important;" class="block hover:text-white transition-colors"' . $attributes .'>';
 						$item_output .= (isset($args->link_before) ? $args->link_before : '') . apply_filters('the_title', $item->title, $item->ID) . (isset($args->link_after) ? $args->link_after : '');
 						$item_output .= '</a>';
 						$item_output .= isset($args->after) ? $args->after : '';
