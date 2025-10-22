@@ -93,7 +93,7 @@ $site_logo = get_theme_mod('custom_logo');
 							}
 							
 							$item_output = isset($args->before) ? $args->before : '';
-							$item_output .= '<a class="transition-colors hover:text-white hidden md:inline-block text-[#fbfbfb] ' . $current_class . '"' . $attributes .'>';
+							$item_output .= '<a class="transition-colors hover:text-white hidden md:inline-block !text-[#fbfbfb] ' . $current_class . '"' . $attributes .'>';
 							$item_output .= (isset($args->link_before) ? $args->link_before : '') . apply_filters('the_title', $item->title, $item->ID) . (isset($args->link_after) ? $args->link_after : '');
 							$item_output .= '</a>';
 							$item_output .= isset($args->after) ? $args->after : '';
@@ -115,7 +115,7 @@ $site_logo = get_theme_mod('custom_logo');
                 <button
 						onclick="toggleSearchBar()" 
 						aria-label="Søg artikler" 
-						class="hidden lg:flex items-center bg-[var(--main-color-light)] dark:bg-[var(--main-color-dark)] bg-opacity-80 justify-center w-12 h-12 rounded-lg hover:opacity-90 transition-opacity text-[#fbfbfb]"
+						class="hidden lg:flex items-center bg-[var(--third-color-dark)] bg-opacity-80 justify-center w-12 h-12 rounded-lg hover:opacity-90 transition-opacity text-[#fbfbfb]"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="#fbfbfb" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -175,8 +175,8 @@ $site_logo = get_theme_mod('custom_logo');
 </div>
 
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 z-50 bg-black/50 hidden">
-	<div class="fixed right-0 top-0 h-full w-64 bg-[var(--second-color-light)] dark:bg-[var(--second-color-dark)] p-6">
+<div id="mobile-menu" class="fixed inset-0 z-50 bg-dark/50 hidden">
+	<div class="fixed right-0 top-0 h-full w-64 bg-[var(--second-color-dark)] p-6">
 		<div class="flex items-center justify-between mb-6">
 			<?php if ($site_logo) : ?>
 				<a href="<?php echo esc_url($site_url); ?>" class="flex items-center gap-2">
@@ -207,7 +207,7 @@ $site_logo = get_theme_mod('custom_logo');
 				>
 				<button 
 					type="submit" 
-					class="absolute right-2 top-1/2 transform -translate-y-1/2 px-3 py-1 bg-[var(--accent-color-dark)] dark:bg-[var(--accent-color-light)] text-[var(--second-color-light)] dark:text-[var(--second-color-dark)] rounded hover:opacity-90 transition-opacity text-sm"
+					class="absolute right-2 top-1/2 transform -translate-y-1/2 px-3 py-1 bg-[var(--accent-color-light)] text-[var(--second-color-dark)] rounded hover:opacity-90 transition-opacity text-sm"
 				>
 					Søg
 				</button>
