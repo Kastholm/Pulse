@@ -93,7 +93,7 @@ $site_logo = get_theme_mod('custom_logo');
 							}
 							
 							$item_output = isset($args->before) ? $args->before : '';
-							$item_output .= '<a class="transition-colors hover:text-white hidden md:inline-block !text-[#fbfbfb] ' . $current_class . '"' . $attributes .'>';
+							$item_output .= '<a class="transition-colors hover:text-white hidden md:inline-block text-[var(--main-color-light)] ' . $current_class . '"' . $attributes .'>';
 							$item_output .= (isset($args->link_before) ? $args->link_before : '') . apply_filters('the_title', $item->title, $item->ID) . (isset($args->link_after) ? $args->link_after : '');
 							$item_output .= '</a>';
 							$item_output .= isset($args->after) ? $args->after : '';
