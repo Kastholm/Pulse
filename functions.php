@@ -46,9 +46,8 @@ add_action( 'after_setup_theme', function() {
 	// Register menus
 	register_nav_menus([
 		"primary-nav" => "Primary Menu",
-		"footer-nav-1" => "Footer Menu 1",
-		"footer-nav-2" => "Footer Menu 2",
-		// "footer-nav-3" => "Footer Menu 3",
+		"footer-main" => "Footer Main Navigation",
+		"footer-info" => "Footer Info Navigation",
 	]);
 
 	// Custom image size
