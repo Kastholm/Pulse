@@ -37,7 +37,6 @@ function insert_websail_ad_script() {
             } 
             slot.addService(googletag.pubads());
             slots.push(slot);
-            //googletag.display(div_id);
         });
         googletag.enableServices();
         slots.forEach(s => googletag.display(s.getSlotElementId()));
