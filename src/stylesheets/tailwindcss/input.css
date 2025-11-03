@@ -142,6 +142,9 @@
   
   /* ----------------------------------- ADS ---------------------------------- */
   
+  .mobile {
+    display: none !important;
+  }
   .desktop {
     @apply bg-[var(--second-color-light)] dark:bg-[var(--second-color-dark)];
     min-height: 250px;
@@ -164,7 +167,9 @@
   }
   
   @media (max-width: 775px) {
+    
     .desktop {
+      display: none !important;
       min-height: 0px !important;
     }
     .desktop::before {
@@ -191,4 +196,5 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
+
   }
